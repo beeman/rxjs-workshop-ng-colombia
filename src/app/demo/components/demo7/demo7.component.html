@@ -1,9 +1,31 @@
 <app-card title="Creating Observables"></app-card>
 
-<app-card title="of"></app-card>
+<app-card title="of">
+  <app-button label="Trigger of" (click)="activity1()"></app-button>
+  <pre>{{ activity1Result | json }}</pre>
+</app-card>
 
-<app-card title="from"></app-card>
+<app-card title="from">
+  <app-button label="Trigger from" (click)="activity2()"></app-button>
+  <pre>{{ activity2Result | json }}</pre>
+</app-card>
 
-<app-card title="throwError"></app-card>
+<app-card title="throwError">
+  <app-button label="Trigger throwError" (click)="activity3()"></app-button>
+  <pre>Result: {{ activity3Result| json }}</pre>
+  <pre>Error: {{ activity3Error | json }}</pre>
+  <pre>Complete: {{ activity3Complete | json }}</pre>
+</app-card>
 
-<app-card title="Observable.create"></app-card>
+<app-card title="Observable.create">
+  <app-button label="Trigger Observable.create" (click)="activity4()"></app-button>
+  <pre>Result: {{ activity4Result| json }}</pre>
+  <pre>Error: {{ activity4Error | json }}</pre>
+  <pre>Complete: {{ activity4Complete | json }}</pre>
+</app-card>
+
+<app-card title="empty">
+  <app-button label="Trigger empty" (click)="activity5()"></app-button>
+  <pre>Result: {{ activity5Result| json }}</pre>
+  <pre>Complete: {{ activity5Complete | json }}</pre>
+</app-card>

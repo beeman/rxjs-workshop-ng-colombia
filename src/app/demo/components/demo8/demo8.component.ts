@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { fromEvent, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-demo8',
@@ -6,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Demo8Component implements OnInit {
 
-  constructor() { }
+  public activity1Subject = new Subject();
 
   ngOnInit() {
+    this.activity1();
   }
 
+  activity1() {
+    fromEvent(document, 'mousemove')
+      .subscribe({
+        next: (res: MouseEvent) => {
+          const { clientX, clientY } = res;
+
+          this.activity1Subject.next({ clientX, clientY });
+        }
+      });
+  }
 }

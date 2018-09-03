@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LayoutComponent } from './containers/layout/layout.component';
 import { RouterModule } from '@angular/router';
-import { LayoutSidebarComponent } from './containers/layout-sidebar/layout-sidebar.component';
-import { CardComponent } from './components/card/card.component';
+
 import { ButtonComponent } from './components/button/button.component';
+import { CardComponent } from './components/card/card.component';
 import { CountryCardComponent } from './components/country-card/country-card.component';
+import { LayoutComponent } from './containers/layout/layout.component';
+import { LayoutSidebarComponent } from './containers/layout-sidebar/layout-sidebar.component';
 
 @NgModule({
   imports: [
@@ -13,13 +14,14 @@ import { CountryCardComponent } from './components/country-card/country-card.com
     RouterModule,
   ],
   declarations: [
+    ButtonComponent,
+    CardComponent,
+    CountryCardComponent,
     LayoutComponent,
     LayoutSidebarComponent,
-    CardComponent,
-    ButtonComponent,
-    CountryCardComponent,
   ],
   exports: [
+    ButtonComponent,
     CardComponent,
     CountryCardComponent,
   ]
