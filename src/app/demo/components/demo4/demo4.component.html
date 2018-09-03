@@ -1,0 +1,21 @@
+<app-card title="Description">
+  <p></p>
+</app-card>
+
+<app-card title="Retrieve data from an API">
+  <p>
+    <button (click)="makeRequest()" [disabled]="loading">Random Gif</button>
+  </p>
+  <div *ngIf="result; else noresult">
+    <img [attr.src]="result.images['original']['url']" alt="">
+  </div>
+  <ng-template #noresult>
+    <div class="text-center" *ngIf="loading">
+      <i class="text-danger fa fa-spinner fa-spin fa-5x my-5"></i>
+    </div>
+    <div class="text-center" *ngIf="!loading && !result">
+      No result
+    </div>
+  </ng-template>
+</app-card>
+

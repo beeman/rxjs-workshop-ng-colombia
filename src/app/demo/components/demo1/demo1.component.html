@@ -1,0 +1,30 @@
+<app-card title="Handling events">
+  <p>
+    In this demo we use 2 different ways to listen to the events of a button click.
+  </p>
+  <p>
+    Both button clicks will log the a message to the 'Message' panel below, and log the raw output
+    in the browsers console. Make sure to open the console to see this data.
+  </p>
+</app-card>
+
+<app-card title="addEventListener">
+  <p>The first button uses the default <code>addEventListener</code> method provided by the browser.</p>
+  <button #button1 class="btn btn-primary">Button 1</button>
+</app-card>
+
+<app-card title="fromEvent">
+  <p>The second button uses the <code>fromEvent</code> Observable.</p>
+  <button #button2 class="btn btn-primary">Button 2</button>
+</app-card>
+
+<app-card title="fromEvent">
+  <!--<p>The second button uses the <code>fromEvent</code> Observable.</p>-->
+  <!--<button #button2 class="btn btn-primary">Button 2</button>-->
+
+  <pre>{{ documentClickResult | json }}</pre>
+</app-card>
+
+<app-card title="Message">
+  <pre>{{ message }}</pre>
+</app-card>

@@ -1,0 +1,8 @@
+<app-card title="Description">
+  <p *ngFor="let line of description" [innerHtml]="line"></p>
+</app-card>
+
+<app-card title="Canvas 1: Mouse Drag" [style.color]="cvs1Ctx.strokeStyle">
+  <canvas #canvas1></canvas>
+</app-card>
+

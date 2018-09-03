@@ -1,0 +1,77 @@
+<app-card title="Description">
+  <p>
+    In this demo all the buttons listen to the click using the <code>fromEvent</code> Observable.
+  </p>
+  <p>
+    While it's generally considered a good practice, we won't bother with unsubscribing the observables.
+  </p>
+  <p>
+    On each click we increase the counter for that button.
+  </p>
+  <p>
+    The <code>pipe()</code> method can be used to transform the stream of events.
+  </p>
+  <p>
+    It passes the events through the provided operators and can be used to do things like filtering or modifying the
+    events.
+  </p>
+</app-card>
+
+<app-card title="Button 1: Subscription only">
+  <p>
+    Subscribe to the button clicks without transforming the stream.
+  </p>
+  <button #button1 class="btn btn-primary">
+    Clicked {{counters.button1}} times
+  </button>
+</app-card>
+
+<app-card title="Button 2: Throttle clicks to {{throttleDelay}}ms">
+  <p>
+    The <code>throttleTime</code> operator limits the number of events that get emitted in the specified time.
+  </p>
+  <button #button2 class="btn btn-primary">
+    Clicked {{counters.button2}} times
+  </button>
+</app-card>
+
+<app-card title="Button 3: Debounce the clicks with {{debounceDelay}}ms">
+  <p>
+    The <code>debounceTime</code> operator sets the specified time it waits between events before emitting the event.
+  </p>
+  <button #button3 class="btn btn-primary">
+    Clicked {{counters.button3}} times
+  </button>
+</app-card>
+
+<app-card title="Button 4: Stop counting after {{takeUntilAmount}} clicks">
+  <p>
+    The <code>takeUntil</code> operator limits the number of events that will be emitted.
+  </p>
+  <button #button4 class="btn btn-primary" [disabled]="(counters.button4) == takeUntilAmount">
+    Clicked {{counters.button4}} times
+  </button>
+</app-card>
+
+<app-card title="Button 5: Skip the first {{skipAmount}} clicks">
+  <p>
+    The <code>skip</code> operator starts emitting after the specified amount.
+  </p>
+  <button #button5 class="btn btn-primary">
+    Clicked {{counters.button5}} times
+  </button>
+</app-card>
+
+
+<app-card title="Button 6: Modify the result of the event.">
+  <p>
+    The <code>map</code> operator modifies the result of the event.
+  </p>
+  <button #button6 class="btn btn-primary">
+    Clicked {{counters.button6}} times
+  </button>
+</app-card>
+
+<app-card title="Counters">
+  <pre>{{ counters | json }}</pre>
+</app-card>
