@@ -9,6 +9,7 @@ import { mergeMap, takeUntil } from 'rxjs/operators';
   styles: [`
     canvas {
       width: 100%;
+      background: #333;
     }
   `]
 })

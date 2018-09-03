@@ -1,9 +1,10 @@
 <div class="row">
   <div class="col-3">
     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-      <a class="nav-link" data-toggle="pill"role="tab" *ngFor="let link of links"
+      <a class="nav-link" data-toggle="pill" role="tab"
+         *ngFor="let link of links; let i = index"
          [routerLink]="link.url" routerLinkActive="active">
-        {{link.label}}
+        {{ i }}. {{link.label}}
       </a>
     </div>
   </div>

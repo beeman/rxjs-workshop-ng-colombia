@@ -5,7 +5,6 @@ import { debounceTime, map, skip, takeUntil, throttleTime } from 'rxjs/operators
 @Component({
   selector: 'app-demo2',
   templateUrl: './demo2.component.html',
-  styles: []
 })
 export class Demo2Component implements OnInit {
 

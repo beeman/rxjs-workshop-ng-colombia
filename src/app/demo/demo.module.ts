@@ -13,6 +13,7 @@ import { Demo6Component } from './components/demo6/demo6.component';
 import { Demo7Component } from './components/demo7/demo7.component';
 import { Demo8Component } from './components/demo8/demo8.component';
 import { Demo9Component } from './components/demo9/demo9.component';
+import { Demo0Component } from './components/demo0/demo0.component';
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { Demo9Component } from './components/demo9/demo9.component';
     Demo7Component,
     Demo8Component,
     Demo9Component,
+    Demo0Component,
   ]
 })
 export class DemoModule {

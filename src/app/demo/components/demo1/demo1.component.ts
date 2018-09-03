@@ -79,13 +79,9 @@ export class Demo1Component implements OnDestroy, OnInit {
   /**
    * Activity 4
    *
-   * The ngOnDestroy method runs on Component tear down.
-   *
-   * Unsubscribe the observable to prevent memory leaks.
-   *
    */
   activity4() {
-    this.documentClicksub = fromEvent(document.activeElement, 'click')
+    this.documentClicksub = fromEvent(document, 'click')
       .subscribe(
         (res: MouseEvent) => {
           console.log(res);

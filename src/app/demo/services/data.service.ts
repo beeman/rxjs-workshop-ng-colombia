@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { randomImageUrl, imageSearchUrl } from './lib/giphy.api';
+import { countriesByCapital, countriesByLang, countriesByName } from './lib/countries.api';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,18 @@ export class DataService {
 
   public randomImage(): Observable<any> {
     return this.http.get(randomImageUrl());
+  }
+
+  getCountriesByLang(lang: string): Observable<any> {
+    return this.http.get(countriesByLang(lang));
+  }
+
+  getCountriesByName(name: string): Observable<any> {
+    return this.http.get(countriesByName(name));
+  }
+
+  getCountriesByCapital(capital: string): Observable<any> {
+    return this.http.get(countriesByCapital(capital));
   }
 
 }

@@ -10,7 +10,6 @@ interface Link {
 @Component({
   selector: 'app-layout-sidebar',
   templateUrl: './layout-sidebar.component.html',
-  styles: []
 })
 export class LayoutSidebarComponent implements OnInit {
   @Input() public links: Link[];

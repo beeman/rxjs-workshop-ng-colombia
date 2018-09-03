@@ -24,18 +24,24 @@
   </div>
 </app-card>
 
-<app-card title="Input 3: Transform input events">
+<app-card title="Input 3: Search countries API">
   <div>
     <input class="form-control form-control-lg bg-secondary text-white"
            #input3
            type="text"
            placeholder="Enter your search query">
   </div>
+
+  <div *ngIf="input3result.error as error">
+    <pre>{{error | json}}</pre>
+  </div>
+
   <div *ngIf="input3result.result as result; else noresult">
-    <div *ngFor="let item of result.data">
-      <img [attr.src]="item.images['original']['url']" alt="">
+    <div *ngFor="let item of result" class="my-3">
+      <app-country-card [country]="item"></app-country-card>
     </div>
   </div>
+
   <ng-template #noresult>
     <div class="text-center" *ngIf="input3result.loading">
       <i class="text-danger fa fa-spinner fa-spin fa-5x my-5"></i>

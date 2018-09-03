@@ -109,6 +109,9 @@ export class Demo5Component implements OnInit {
    * - use tap to store the value in input1result
    * - Debounce for 300 ms
    * - Only emit unique values using distinctUntilChanged
+   *
+   * TODO: Search should keep working after an error was triggered
+   * TODO: Add caching
    */
   activity3() {
     this.input3$query = this.input3$
@@ -128,15 +131,23 @@ export class Demo5Component implements OnInit {
         }),
         switchMap((query) => this.search(query))
       )
-      .subscribe((result) => {
-        this.input3result.result = result;
-      });
+      .subscribe(
+        (result) => {
+          this.input3result.result = result;
+        },
+        error => {
+          this.input3result.error = error;
+          this.input3result.loading = false;
+          this.input3result.result = null;
+        }
+      );
   }
 
 
   search(query) {
+    console.log('search', query);
     this.input3result.loading = true;
-    return this.data.searchImage(query)
+    return this.data.getCountriesByName(query)
       .pipe(
         tap(() => this.input3result.loading = false),
       );
