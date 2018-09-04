@@ -77,80 +77,28 @@ export class Demo5Component implements OnInit {
   }
 
   /**
-   * Activity 1
+   * Solution for Activity 1
    *
-   * Subscribe to input1 and update the value in result1
    */
   solution1() {
-    this.input1$.subscribe((event) => {
-      this.result1.value = this.input1.value;
-      console.log(event);
-    });
+
   }
 
   /**
-   * Activity 2
+   * Solution for Activity 2
    *
-   * - Subscribe to input2
-   * - use map to return the value of element input2
-   * - use tap to store the value in result1
-   * - Debounce for 300 ms
-   * - Only emit unique values using distinctUntilChanged
    */
   solution2() {
-    this.input2$query = this.input2$.pipe(
-      // Use the map operator to return the value of the input into the stream
-      // We ignore the event we get back as we are not interested in the keyboard interaction, but in the value of the input.
-      map((event) => {
-        this.result2.value = this.input2.value;
-        return this.input2.value;
-      }),
-      // Update the value after debouncing
-      debounceTime(this.debounceDelay),
-      // Only emit values that are changed
-      distinctUntilChanged(),
-    );
 
-    this.input2$query.subscribe((query) => {
-      console.log('Updating query to', query);
-      this.result2.query = query;
-    });
   }
 
 
   /**
-   * Activity 3
+   * Solution for Activity 3
    *
-   * - Handle the input like above
-   * - use map to return the value of element input3
-   * - use tap to store the value in result1
-   * - Debounce for 300 ms
-   * - Only emit unique values using distinctUntilChanged
-   *
-   * TODO: Search should keep working after an error was triggered
-   * TODO: Add caching
    */
   solution3() {
-    this.input3$query = this.input3$.pipe(
-      // Return the input value
-      map(() => this.input3.value),
-      // Update the value after debouncing
-      debounceTime(this.debounceDelay),
-      // Only emit values that are changed
-      distinctUntilChanged(),
-    );
 
-    this.input3$query.pipe(
-      tap(query => this.result3.query = query),
-      switchMap((query) => this.search3(query))
-    ).subscribe(
-      result => this.result3.result = result,
-      error => {
-        this.result3.error = error;
-        this.result3.loading = false;
-        this.result3.result = null;
-      }
-    );
   }
 
 }

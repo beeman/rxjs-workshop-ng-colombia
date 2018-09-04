@@ -23,14 +23,7 @@ export class Demo4Component implements OnInit {
    * Solution for Activity 1
    */
   solution1() {
-    this.result1 = null;
-    this.loading1 = true;
-    this.service.randomImage()
-      .pipe(map(result => result['data']))
-      .subscribe(data => {
-        this.result1 = data;
-        this.loading1 = false;
-      });
+
   }
 
 }
