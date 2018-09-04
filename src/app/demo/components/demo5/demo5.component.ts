@@ -51,9 +51,9 @@ export class Demo5Component implements OnInit {
     this.input2$ = fromEvent(this.input2El, 'keyup');
     this.input3$ = fromEvent(this.input3El, 'keyup');
 
-    this.activity1();
-    this.activity2();
-    this.activity3();
+    this.solution1();
+    this.solution2();
+    this.solution3();
   }
 
   /**
@@ -61,7 +61,7 @@ export class Demo5Component implements OnInit {
    *
    * Subscribe to input1 and update the value in input1result
    */
-  activity1() {
+  solution1() {
     this.input1$
       .subscribe((event) => {
         this.input1result.value = this.input1El.value;
@@ -78,7 +78,7 @@ export class Demo5Component implements OnInit {
    * - Debounce for 300 ms
    * - Only emit unique values using distinctUntilChanged
    */
-  activity2() {
+  solution2() {
     this.input2$query = this.input2$
       .pipe(
         // Use the map operator to return the value of the input into the stream
@@ -113,7 +113,7 @@ export class Demo5Component implements OnInit {
    * TODO: Search should keep working after an error was triggered
    * TODO: Add caching
    */
-  activity3() {
+  solution3() {
     this.input3$query = this.input3$
       .pipe(
         // Return the input value

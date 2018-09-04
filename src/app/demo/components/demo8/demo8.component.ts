@@ -11,10 +11,10 @@ export class Demo8Component implements OnInit {
   public activity2Subject = new BehaviorSubject({ count: 1 });
 
   ngOnInit() {
-    this.activity1();
+    this.solution1();
   }
 
-  activity1() {
+  solution1() {
     fromEvent(document, 'mousemove')
       .subscribe({
         next: (res: MouseEvent) => {

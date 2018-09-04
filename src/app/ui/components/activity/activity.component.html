@@ -15,36 +15,30 @@
     </div>
   </div>
   <div *ngIf="showSolution">
-    <div class="card-header">Solution</div>
     <div class="card-body">
+      <div class="alert alert-danger">
+        Solution
+      </div>
       <app-code>{{ solution }}</app-code>
     </div>
   </div>
 
-  <ng-container *ngIf="steps">
-    <div class="card-header">Steps</div>
-    <div class="card-body">
+  <div class="card-body">
+    <ng-container *ngIf="steps">
       <app-code-steps [steps]="steps"></app-code-steps>
-    </div>
-  </ng-container>
+    </ng-container>
 
-  <ng-template #solutionToggle>
-    <div class="card-header">
-      <button (click)="showSolution = true">Show Solution</button>
-    </div>
-  </ng-template>
-
-  <ng-container *ngIf="showContent">
-    <div class="card-header">Content</div>
-    <div class="card-body">
-      <ng-content></ng-content>
-    </div>
-  </ng-container>
+    <ng-container *ngIf="showContent">
+      <div class="mb-4 mt-5">
+        <ng-content></ng-content>
+      </div>
+    </ng-container>
+  </div>
 
   <ng-container *ngIf="showResult">
     <div class="card-header">Result</div>
     <div class="card-body">
-      <pre *ngIf="result" class="mb-0">{{ result | json }}</pre>
+      <pre *ngIf="result" class="mb-0">{{ result | json }} </pre>
     </div>
   </ng-container>
 

@@ -1,8 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { fromEvent, Observable } from 'rxjs';
-import { mergeMap, switchMap, takeUntil } from 'rxjs/operators';
-import { log } from 'util';
-
+import { switchMap, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-demo3',
@@ -10,9 +8,6 @@ import { log } from 'util';
   styles: [`
     canvas {
       width: 100%;
-      /*position: absolute;*/
-      /*top: 0;*/
-      /*left: 0;*/
       background: #333;
     }
   `]
@@ -24,7 +19,6 @@ export class Demo3Component implements OnInit {
     `Based on these events we draw a line with random colors onto a <code>canvas</code>.`
   ];
 
-  // Get a reference to the elements using their #tag
   @ViewChild('canvas1') canvas1: ElementRef;
 
   // Store a reference to the actual nativeElement
@@ -77,15 +71,15 @@ export class Demo3Component implements OnInit {
     this.initCanvas();
 
     // Run the activities
-    this.activity1();
-    this.activity2();
+    this.solution1();
+    this.solution2();
   }
 
   /**
    * Activity 1
    *
    */
-  activity1() {
+  solution1() {
     // Set up the fromEvent Observables
     this.canvas1move$ = fromEvent(this.cvs1El, 'mousemove');
     this.canvas1down$ = fromEvent(this.cvs1El, 'mousedown');
@@ -96,7 +90,7 @@ export class Demo3Component implements OnInit {
    * Activity 2
    *
    */
-  activity2() {
+  solution2() {
     const paints$ = this.canvas1down$.pipe(
       switchMap(() => this.canvas1move$.pipe(takeUntil(this.canvas1up$)))
     );

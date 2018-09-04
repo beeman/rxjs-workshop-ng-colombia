@@ -1,31 +1,31 @@
 <app-card title="Creating Observables"></app-card>
 
 <app-card title="of">
-  <app-button label="Trigger of" (click)="activity1()"></app-button>
+  <app-button label="Trigger of" (click)="solution1()"></app-button>
   <pre>{{ result1 | json }}</pre>
 </app-card>
 
 <app-card title="from">
-  <app-button label="Trigger from" (click)="activity2()"></app-button>
+  <app-button label="Trigger from" (click)="solution2()"></app-button>
   <pre>{{ result2 | json }}</pre>
 </app-card>
 
 <app-card title="throwError">
-  <app-button label="Trigger throwError" (click)="activity3()"></app-button>
+  <app-button label="Trigger throwError" (click)="solution3()"></app-button>
   <pre>Result: {{ result3| json }}</pre>
   <pre>Error: {{ activity3Error | json }}</pre>
   <pre>Complete: {{ activity3Complete | json }}</pre>
 </app-card>
 
 <app-card title="Observable.create">
-  <app-button label="Trigger Observable.create" (click)="activity4()"></app-button>
+  <app-button label="Trigger Observable.create" (click)="solution4()"></app-button>
   <pre>Result: {{ result4| json }}</pre>
   <pre>Error: {{ activity4Error | json }}</pre>
   <pre>Complete: {{ activity4Complete | json }}</pre>
 </app-card>
 
 <app-card title="empty">
-  <app-button label="Trigger empty" (click)="activity5()"></app-button>
+  <app-button label="Trigger empty" (click)="solution5()"></app-button>
   <pre>Result: {{ result5| json }}</pre>
   <pre>Complete: {{ activity5Complete | json }}</pre>
 </app-card>

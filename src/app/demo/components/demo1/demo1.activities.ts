@@ -1,4 +1,4 @@
-export const intro = {
+export const lesson = {
   title: 'Handling events',
   description: [
     `In this demo we use different ways to listen to the events of a button click.`,
@@ -7,7 +7,7 @@ export const intro = {
   showResult: false,
 };
 
-export const info1 = {
+export const activity1 = {
   title: 'Activity 1: addEventListener',
   description: [
     'In this activity we listen to a button click using the default <code>addEventListener</code> method provided by the browser.'
@@ -29,7 +29,7 @@ export const info1 = {
       code: `this.button1.addEventListener('click', (event) => {});`,
     },
     {
-      step: `In the callback, assign an object to the vale of <code>info1.result</code>.`,
+      step: `In the callback, assign an object to the vale of <code>activity1.result</code>.`,
       code: `this.result1 = {};`,
     },
     {
@@ -39,7 +39,7 @@ export const info1 = {
   ],
 };
 
-export const info2 = {
+export const activity2 = {
   title: 'Activity 2: fromEvent',
   description: [
     `The second button uses the <code>fromEvent</code> Observable.`
@@ -88,7 +88,7 @@ this.activity2sub = this.button2$.subscribe((event: MouseEvent) => {
   ],
 };
 
-export const info3 = {
+export const activity3 = {
   title: 'Activity 3: fromEvent',
   description: [
     `The second button uses the <code>fromEvent</code> Observable.`
@@ -105,7 +105,7 @@ export const info3 = {
   ],
 };
 
-export const info4 = {
+export const activity4 = {
   title: 'Exercise 1: unsubscribing',
   description: [
     `To prevent memory leaks, we should always consider unsubscribing from our Observables.`,

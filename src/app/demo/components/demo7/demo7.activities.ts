@@ -1,11 +1,11 @@
-export const intro = {
+export const lesson = {
   title: 'Handling events',
   description: [
     ``,
   ],
 };
 
-export const info1 = {
+export const activity1 = {
   title: 'Activity X: ',
   description: [
     ``

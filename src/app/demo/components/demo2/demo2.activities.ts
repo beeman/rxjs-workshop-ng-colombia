@@ -1,4 +1,4 @@
-export const intro = {
+export const lesson = {
   title: 'Transform streams',
   description: [
     `In this demo all the buttons listen to the click using the <code>fromEvent</code> Observable.`,
@@ -9,7 +9,7 @@ export const intro = {
   ],
 };
 
-export const info1 = {
+export const activity1 = {
   title: 'Activity 1: Subscription only',
   description: [
     `Subscribe to the button clicks without transforming the stream.`
@@ -34,7 +34,7 @@ export const info1 = {
   ],
 };
 
-export const info2 = {
+export const activity2 = {
   title: 'Activity 2: Throttle clicks with a delay',
   description: [
     `The <code>throttleTime</code> operator limits the number of events that get emitted in the specified time.`
@@ -66,7 +66,7 @@ export const info2 = {
   ],
 };
 
-export const info3 = {
+export const activity3 = {
   title: 'Activity 3: Debounce the clicks with a delay.',
   description: [
     `The <code>debounceTime</code> operator sets the specified time it waits between events before emitting the event.`
@@ -95,16 +95,15 @@ export const info3 = {
   ],
 };
 
-export const info4 = {
+export const activity4 = {
   title: 'Activity 4: Modify the result of the event.',
   description: [
-    `The <code>map</code> operator modifies the result of the event.`,
+    `The <code>map</code> operator can modify the result of the stream.`,
+    `We can use it to send another value to the stream, we will send the value of <code>multiplyAmount</code>.`,
   ],
   solution: `this.button4$
   .pipe(map(() => this.multiplyAmount))
-  .subscribe(
-    (amount) => this.increaseCounter('button4', amount),
-  );
+  .subscribe((amount) => this.increaseCounter('button4', amount));
 `,
   steps: [
     {
@@ -129,22 +128,20 @@ export const info4 = {
     },
     {
       step: `Take the amount returned by the map function and pass it in the <code>increaseCounter()</code> method.`,
-      code: `.subscribe(() => this.increaseCounter('button4'));`,
+      code: `.subscribe((amount) => this.increaseCounter('button4', amount));`,
     },
   ],
 };
 
 
-export const info5 = {
+export const activity5 = {
   title: 'Exercise 1: Skip the first number of clicks.',
   description: [
     `The <code>skip</code> operator starts emitting after the specified amount.`,
   ],
   solution: `this.button5$
   .pipe(skip(this.skipAmount))
-  .subscribe(
-    () => this.increaseCounter('button5'),
-  );`,
+  .subscribe(() => this.increaseCounter('button5'));`,
   steps: [
     {
       step: `Import <code>skip</code> from <code>rxjs/operators</code>.`,
@@ -165,7 +162,7 @@ export const info5 = {
   ],
 };
 
-export const info6 = {
+export const activity6 = {
   title: 'Exercise 2: Stop counting after a number of clicks',
   description: [
     `The <code>takeUntil</code> operator limits the number of events that will be emitted.`,

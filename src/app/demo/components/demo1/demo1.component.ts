@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { fromEvent, Observable, Subscription } from 'rxjs';
-import { info1, info2, info3, info4, intro } from './demo1.activities';
+import { activity1, activity2, activity3, activity4, lesson } from './demo1.activities';
 
 @Component({
   selector: 'app-demo1',
@@ -8,11 +8,11 @@ import { info1, info2, info3, info4, intro } from './demo1.activities';
 })
 export class Demo1Component implements OnDestroy, OnInit {
   // Store the info about the activities
-  public readonly intro = intro;
-  public readonly info1 = info1;
-  public readonly info2 = info2;
-  public readonly info3 = info3;
-  public readonly info4 = info4;
+  public readonly lesson = lesson;
+  public readonly activity1 = activity1;
+  public readonly activity2 = activity2;
+  public readonly activity3 = activity3;
+  public readonly activity4 = activity4;
 
   // Get a reference to the elements using their #tag
   @ViewChild('button1') button1ref: ElementRef;
@@ -48,15 +48,15 @@ export class Demo1Component implements OnDestroy, OnInit {
     this.button2 = this.button2ref.nativeElement;
 
     // Run the activities
-    this.activity1();
-    this.activity2();
-    this.activity3();
+    this.solution1();
+    this.solution2();
+    this.solution3();
   }
 
   /**
    * Activity 1
    */
-  activity1() {
+  solution1() {
     console.log('', 'aa');
     this.button1.addEventListener('click', (event: MouseEvent) => {
         console.log('aa', event);
@@ -68,7 +68,7 @@ export class Demo1Component implements OnDestroy, OnInit {
   /**
    * Activity 2
    */
-  activity2() {
+  solution2() {
     this.button2$ = fromEvent(this.button2, 'click');
     this.activity2sub = this.button2$
       .subscribe(
@@ -81,7 +81,7 @@ export class Demo1Component implements OnDestroy, OnInit {
   /**
    * Activity 3
    */
-  activity3() {
+  solution3() {
     this.activity3sub = fromEvent(document, 'click')
       .subscribe(
         (res: MouseEvent) => {

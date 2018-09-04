@@ -1,14 +1,14 @@
-<app-activity [title]="intro.title"
-              [description]="intro.description"
+<app-activity [title]="lesson.title"
+              [description]="lesson.description"
               [showSolutionLink]="false"
               [showContent]="false"
               [showResult]="false"></app-activity>
 
 
-<app-activity [title]="info1.title"
-              [description]="info1.description"
-              [steps]="info1.steps"
-              [solution]="info1.solution"
+<app-activity [title]="activity1.title"
+              [description]="activity1.description"
+              [steps]="activity1.steps"
+              [solution]="activity1.solution"
               [result]="counters.button1">
 
   <button #button1 class="btn btn-primary">
@@ -18,10 +18,10 @@
 </app-activity>
 
 
-<app-activity [title]="info2.title"
-              [description]="info2.description"
-              [steps]="info2.steps"
-              [solution]="info2.solution"
+<app-activity [title]="activity2.title"
+              [description]="activity2.description"
+              [steps]="activity2.steps"
+              [solution]="activity2.solution"
               [result]="counters.button2">
 
   <button #button2 class="btn btn-primary">
@@ -31,10 +31,10 @@
 </app-activity>
 
 
-<app-activity [title]="info3.title"
-              [description]="info3.description"
-              [steps]="info3.steps"
-              [solution]="info3.solution"
+<app-activity [title]="activity3.title"
+              [description]="activity3.description"
+              [steps]="activity3.steps"
+              [solution]="activity3.solution"
               [result]="counters.button3">
 
   <button #button3 class="btn btn-primary">
@@ -44,10 +44,10 @@
 </app-activity>
 
 
-<app-activity [title]="info4.title"
-              [description]="info4.description"
-              [steps]="info4.steps"
-              [solution]="info4.solution"
+<app-activity [title]="activity4.title"
+              [description]="activity4.description"
+              [steps]="activity4.steps"
+              [solution]="activity4.solution"
               [result]="counters.button4">
 
   <button #button4 class="btn btn-primary">
@@ -57,12 +57,14 @@
 </app-activity>
 
 
-<div class="alert alert-info my-5">Extra Exercises</div>
+<div class="alert alert-info my-5">
+  <h3 class="my-2">Extra Exercises</h3>
+</div>
 
-<app-activity [title]="info5.title"
-              [description]="info5.description"
-              [steps]="info5.steps"
-              [solution]="info5.solution"
+<app-activity [title]="activity5.title"
+              [description]="activity5.description"
+              [steps]="activity5.steps"
+              [solution]="activity5.solution"
               [result]="counters.button5">
 
 
@@ -72,10 +74,10 @@
 </app-activity>
 
 
-<app-activity [title]="info6.title"
-              [description]="info6.description"
-              [steps]="info6.steps"
-              [solution]="info6.solution"
+<app-activity [title]="activity6.title"
+              [description]="activity6.description"
+              [steps]="activity6.steps"
+              [solution]="activity6.solution"
               [result]="counters.button6">
 
   <button #button6 class="btn btn-primary">

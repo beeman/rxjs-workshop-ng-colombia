@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { fromEvent, Observable, Subject } from 'rxjs';
 import { debounceTime, map, skip, takeUntil, throttleTime } from 'rxjs/operators';
-import { intro, info1, info2, info3, info4, info5, info6 } from './demo2.activities';
+import { lesson, activity1, activity2, activity3, activity4, activity5, activity6 } from './demo2.activities';
 
 @Component({
   selector: 'app-demo2',
@@ -9,13 +9,13 @@ import { intro, info1, info2, info3, info4, info5, info6 } from './demo2.activit
 })
 export class Demo2Component implements OnInit {
   // Store the info about the activities
-  public readonly intro = intro;
-  public readonly info1 = info1;
-  public readonly info2 = info2;
-  public readonly info3 = info3;
-  public readonly info4 = info4;
-  public readonly info5 = info5;
-  public readonly info6 = info6;
+  public readonly lesson = lesson;
+  public readonly activity1 = activity1;
+  public readonly activity2 = activity2;
+  public readonly activity3 = activity3;
+  public readonly activity4 = activity4;
+  public readonly activity5 = activity5;
+  public readonly activity6 = activity6;
 
   // Get a reference to the elements using their #tag
   @ViewChild('button1') button1ref: ElementRef;
@@ -89,18 +89,18 @@ export class Demo2Component implements OnInit {
     this.button6$ = fromEvent(this.button6, 'click');
 
     // Run the activities
-    this.activity1();
-    this.activity2();
-    this.activity3();
-    this.activity4();
-    this.activity5();
-    this.activity6();
+    this.solution1();
+    this.solution2();
+    this.solution3();
+    this.solution4();
+    this.solution5();
+    this.solution6();
   }
 
   /**
    * Activity 1
    */
-  activity1() {
+  solution1() {
     this.button1$.subscribe(
       () => this.increaseCounter('button1'),
     );
@@ -109,7 +109,7 @@ export class Demo2Component implements OnInit {
   /**
    * Activity 2
    */
-  activity2() {
+  solution2() {
     this.button2$
       .pipe(throttleTime(this.throttleDelay))
       .subscribe(
@@ -120,7 +120,7 @@ export class Demo2Component implements OnInit {
   /**
    * Activity 3
    */
-  activity3() {
+  solution3() {
     this.button3$
       .pipe(debounceTime(this.debounceDelay))
       .subscribe(
@@ -131,7 +131,7 @@ export class Demo2Component implements OnInit {
   /**
    * Activity 4
    */
-  activity4() {
+  solution4() {
     this.button4$
       .pipe(
         map(() => this.multiplyAmount)
@@ -144,7 +144,7 @@ export class Demo2Component implements OnInit {
   /**
    * Activity 5
    */
-  activity5() {
+  solution5() {
     this.button5$
       .pipe(
         skip(this.skipAmount)
@@ -158,7 +158,7 @@ export class Demo2Component implements OnInit {
   /**
    * Activity 6
    */
-  activity6() {
+  solution6() {
     const button6stop = new Subject();
 
     this.button6$

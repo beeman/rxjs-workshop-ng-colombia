@@ -19,7 +19,7 @@ export class Demo7Component {
   public result5: any;
   public activity5Complete: any;
 
-  activity1() {
+  solution1() {
     const result = {
       action: 'I am an of',
       date: Date.now(),
@@ -31,7 +31,7 @@ export class Demo7Component {
       );
   }
 
-  activity2() {
+  solution2() {
     const promise = Promise.resolve({action: 'I am a Promise', date: Date.now()});
 
     from(promise)
@@ -40,7 +40,7 @@ export class Demo7Component {
       );
   }
 
-  activity3() {
+  solution3() {
     throwError('This is the error message')
       .subscribe(
         {
@@ -51,7 +51,7 @@ export class Demo7Component {
       );
   }
 
-  activity4() {
+  solution4() {
     const customObservable = Observable.create(observer => {
       observer.next('Emitting value 1');
       observer.next('Emitting value 2');
@@ -68,7 +68,7 @@ export class Demo7Component {
   }
 
 
-  activity5() {
+  solution5() {
     EMPTY
       .subscribe(
         {
