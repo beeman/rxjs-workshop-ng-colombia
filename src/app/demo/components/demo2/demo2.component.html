@@ -1,77 +1,85 @@
-<app-card title="Description">
-  <p>
-    In this demo all the buttons listen to the click using the <code>fromEvent</code> Observable.
-  </p>
-  <p>
-    While it's generally considered a good practice, we won't bother with unsubscribing the observables.
-  </p>
-  <p>
-    On each click we increase the counter for that button.
-  </p>
-  <p>
-    The <code>pipe()</code> method can be used to transform the stream of events.
-  </p>
-  <p>
-    It passes the events through the provided operators and can be used to do things like filtering or modifying the
-    events.
-  </p>
-</app-card>
+<app-activity [title]="intro.title"
+              [description]="intro.description"
+              [showSolutionLink]="false"
+              [showContent]="false"
+              [showResult]="false"></app-activity>
 
-<app-card title="Button 1: Subscription only">
-  <p>
-    Subscribe to the button clicks without transforming the stream.
-  </p>
+
+<app-activity [title]="info1.title"
+              [description]="info1.description"
+              [steps]="info1.steps"
+              [solution]="info1.solution"
+              [result]="counters.button1">
+
   <button #button1 class="btn btn-primary">
     Clicked {{counters.button1}} times
   </button>
-</app-card>
 
-<app-card title="Button 2: Throttle clicks to {{throttleDelay}}ms">
-  <p>
-    The <code>throttleTime</code> operator limits the number of events that get emitted in the specified time.
-  </p>
+</app-activity>
+
+
+<app-activity [title]="info2.title"
+              [description]="info2.description"
+              [steps]="info2.steps"
+              [solution]="info2.solution"
+              [result]="counters.button2">
+
   <button #button2 class="btn btn-primary">
     Clicked {{counters.button2}} times
   </button>
-</app-card>
 
-<app-card title="Button 3: Debounce the clicks with {{debounceDelay}}ms">
-  <p>
-    The <code>debounceTime</code> operator sets the specified time it waits between events before emitting the event.
-  </p>
+</app-activity>
+
+
+<app-activity [title]="info3.title"
+              [description]="info3.description"
+              [steps]="info3.steps"
+              [solution]="info3.solution"
+              [result]="counters.button3">
+
   <button #button3 class="btn btn-primary">
     Clicked {{counters.button3}} times
   </button>
-</app-card>
 
-<app-card title="Button 4: Stop counting after {{takeUntilAmount}} clicks">
-  <p>
-    The <code>takeUntil</code> operator limits the number of events that will be emitted.
-  </p>
-  <button #button4 class="btn btn-primary" [disabled]="(counters.button4) == takeUntilAmount">
+</app-activity>
+
+
+<app-activity [title]="info4.title"
+              [description]="info4.description"
+              [steps]="info4.steps"
+              [solution]="info4.solution"
+              [result]="counters.button4">
+
+  <button #button4 class="btn btn-primary">
     Clicked {{counters.button4}} times
   </button>
-</app-card>
 
-<app-card title="Button 5: Skip the first {{skipAmount}} clicks">
-  <p>
-    The <code>skip</code> operator starts emitting after the specified amount.
-  </p>
+</app-activity>
+
+
+<div class="alert alert-info my-5">Extra Exercises</div>
+
+<app-activity [title]="info5.title"
+              [description]="info5.description"
+              [steps]="info5.steps"
+              [solution]="info5.solution"
+              [result]="counters.button5">
+
+
   <button #button5 class="btn btn-primary">
     Clicked {{counters.button5}} times
   </button>
-</app-card>
+</app-activity>
 
 
-<app-card title="Button 6: Modify the result of the event.">
-  <p>
-    The <code>map</code> operator modifies the result of the event.
-  </p>
+<app-activity [title]="info6.title"
+              [description]="info6.description"
+              [steps]="info6.steps"
+              [solution]="info6.solution"
+              [result]="counters.button6">
+
   <button #button6 class="btn btn-primary">
     Clicked {{counters.button6}} times
   </button>
-</app-card>
 
-<app-card title="Counters">
-  <pre>{{ counters | json }}</pre>
-</app-card>
+</app-activity>

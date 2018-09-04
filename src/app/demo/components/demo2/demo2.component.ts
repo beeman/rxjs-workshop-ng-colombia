@@ -1,35 +1,44 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { fromEvent, Observable, Subject } from 'rxjs';
 import { debounceTime, map, skip, takeUntil, throttleTime } from 'rxjs/operators';
+import { intro, info1, info2, info3, info4, info5, info6 } from './demo2.activities';
 
 @Component({
   selector: 'app-demo2',
   templateUrl: './demo2.component.html',
 })
 export class Demo2Component implements OnInit {
+  // Store the info about the activities
+  public readonly intro = intro;
+  public readonly info1 = info1;
+  public readonly info2 = info2;
+  public readonly info3 = info3;
+  public readonly info4 = info4;
+  public readonly info5 = info5;
+  public readonly info6 = info6;
 
   // Get a reference to the elements using their #tag
-  @ViewChild('button1') button1: ElementRef;
-  @ViewChild('button2') button2: ElementRef;
-  @ViewChild('button3') button3: ElementRef;
-  @ViewChild('button4') button4: ElementRef;
-  @ViewChild('button5') button5: ElementRef;
-  @ViewChild('button6') button6: ElementRef;
+  @ViewChild('button1') button1ref: ElementRef;
+  @ViewChild('button2') button2ref: ElementRef;
+  @ViewChild('button3') button3ref: ElementRef;
+  @ViewChild('button5') button5ref: ElementRef;
+  @ViewChild('button4') button4ref: ElementRef;
+  @ViewChild('button6') button6ref: ElementRef;
 
   // Store a reference to the actual nativeElement
-  private btn1El: HTMLElement;
-  private btn2El: HTMLElement;
-  private btn3El: HTMLElement;
-  private btn4El: HTMLElement;
-  private btn5El: HTMLElement;
-  private btn6El: HTMLElement;
+  private button1: HTMLElement;
+  private button2: HTMLElement;
+  private button3: HTMLElement;
+  private button4: HTMLElement;
+  private button5: HTMLElement;
+  private button6: HTMLElement;
 
   // Button Observables
   private button1$: Observable<Event>;
   private button2$: Observable<Event>;
   private button3$: Observable<Event>;
-  private button4$: Observable<Event>;
   private button5$: Observable<Event>;
+  private button4$: Observable<Event>;
   private button6$: Observable<Event>;
 
   // The counters for each of the buttons
@@ -37,8 +46,8 @@ export class Demo2Component implements OnInit {
     button1: 0,
     button2: 0,
     button3: 0,
-    button4: 0,
     button5: 0,
+    button4: 0,
     button6: 0,
   };
 
@@ -58,26 +67,26 @@ export class Demo2Component implements OnInit {
   public multiplyAmount = 3;
 
   // Increase the button counter by a given number
-  increaseCounter(button: string, inc: number) {
+  increaseCounter(button: string, inc: number = 1) {
     this.counters[button] = this.counters[button] + inc;
   }
 
   ngOnInit() {
     // Assign the nativeElements.
-    this.btn1El = this.button1.nativeElement;
-    this.btn2El = this.button2.nativeElement;
-    this.btn3El = this.button3.nativeElement;
-    this.btn4El = this.button4.nativeElement;
-    this.btn5El = this.button5.nativeElement;
-    this.btn6El = this.button6.nativeElement;
+    this.button1 = this.button1ref.nativeElement;
+    this.button2 = this.button2ref.nativeElement;
+    this.button3 = this.button3ref.nativeElement;
+    this.button5 = this.button5ref.nativeElement;
+    this.button4 = this.button4ref.nativeElement;
+    this.button6 = this.button6ref.nativeElement;
 
     // Set up the fromEvent Observables
-    this.button1$ = fromEvent(this.btn1El, 'click');
-    this.button2$ = fromEvent(this.btn2El, 'click');
-    this.button3$ = fromEvent(this.btn3El, 'click');
-    this.button4$ = fromEvent(this.btn4El, 'click');
-    this.button5$ = fromEvent(this.btn5El, 'click');
-    this.button6$ = fromEvent(this.btn6El, 'click');
+    this.button1$ = fromEvent(this.button1, 'click');
+    this.button2$ = fromEvent(this.button2, 'click');
+    this.button3$ = fromEvent(this.button3, 'click');
+    this.button4$ = fromEvent(this.button4, 'click');
+    this.button5$ = fromEvent(this.button5, 'click');
+    this.button6$ = fromEvent(this.button6, 'click');
 
     // Run the activities
     this.activity1();
@@ -90,71 +99,50 @@ export class Demo2Component implements OnInit {
 
   /**
    * Activity 1
-   *
-   * Subscribe to the button and update the counter
-   *
    */
   activity1() {
     this.button1$.subscribe(
-      () => this.increaseCounter('button1', 1),
+      () => this.increaseCounter('button1'),
     );
   }
 
   /**
    * Activity 2
-   *
-   * Use the throttleTime operator and set the duration to the throttleDelay
-   *
    */
   activity2() {
     this.button2$
       .pipe(throttleTime(this.throttleDelay))
       .subscribe(
-        () => this.increaseCounter('button2', 1),
+        () => this.increaseCounter('button2'),
       );
   }
 
   /**
    * Activity 3
-   *
-   * Use the debounceTime operator and set the due time to the debounceDelay
-   *
    */
   activity3() {
     this.button3$
       .pipe(debounceTime(this.debounceDelay))
       .subscribe(
-        () => this.increaseCounter('button3', 1),
+        () => this.increaseCounter('button3'),
       );
   }
 
   /**
    * Activity 4
-   *
-   * Use the takeUntil operator to limits the number of events that will be emitted.
-   *
    */
   activity4() {
-    const button4stop = new Subject();
-
     this.button4$
       .pipe(
-        takeUntil(button4stop),
+        map(() => this.multiplyAmount)
       )
       .subscribe(
-        () => {
-          if (this.counters.button4 + 1 === this.takeUntilAmount) {
-            button4stop.next();
-          }
-          this.increaseCounter('button4', 1);
-        }
+        (amount) => this.increaseCounter('button4', amount),
       );
   }
 
   /**
    * Activity 5
-   *
-   * Use the skip operator to skip the first number of events
    */
   activity5() {
     this.button5$
@@ -162,23 +150,28 @@ export class Demo2Component implements OnInit {
         skip(this.skipAmount)
       )
       .subscribe(
-        () => this.increaseCounter('button5', 1),
+        () => this.increaseCounter('button5'),
       );
 
   }
 
   /**
    * Activity 6
-   *
-   * Use the map operator to modify the the result of the event
    */
   activity6() {
+    const button6stop = new Subject();
+
     this.button6$
       .pipe(
-        map(() => this.multiplyAmount)
+        takeUntil(button6stop),
       )
       .subscribe(
-        (amount) => this.increaseCounter('button6', amount),
+        () => {
+          if (this.counters.button6 + 1 === this.takeUntilAmount) {
+            button6stop.next();
+          }
+          this.increaseCounter('button6');
+        }
       );
   }
 

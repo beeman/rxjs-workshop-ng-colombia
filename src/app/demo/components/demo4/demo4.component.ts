@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
-import { map } from 'rxjs/operators';
+import { delay, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-demo4',
@@ -18,7 +18,10 @@ export class Demo4Component implements OnInit {
     this.result = null;
     this.loading = true;
     this.service.randomImage()
-      .pipe(map(result => result['data']))
+      .pipe(
+        delay(500),
+        map(result => result['data']),
+      )
       .subscribe(res => {
         this.loading = false;
         this.result = res;

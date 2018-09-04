@@ -7,16 +7,16 @@ import { EMPTY, from, Observable, of, throwError } from 'rxjs';
 })
 export class Demo7Component {
 
-  public activity1Result: any;
-  public activity2Result: any;
-  public activity3Result: any;
+  public result1: any;
+  public result2: any;
+  public result3: any;
   public activity3Error: any;
   public activity3Complete: any;
-  public activity4Result: any;
+  public result4: any;
   public activity4Error: any;
   public activity4Complete: any;
 
-  public activity5Result: any;
+  public result5: any;
   public activity5Complete: any;
 
   activity1() {
@@ -27,7 +27,7 @@ export class Demo7Component {
 
     of(result)
       .subscribe(
-        res => this.activity1Result = res,
+        res => this.result1 = res,
       );
   }
 
@@ -36,7 +36,7 @@ export class Demo7Component {
 
     from(promise)
       .subscribe(
-        res => this.activity2Result = res,
+        res => this.result2 = res,
       );
   }
 
@@ -44,7 +44,7 @@ export class Demo7Component {
     throwError('This is the error message')
       .subscribe(
         {
-          next: (res) => this.activity3Result = res,
+          next: (res) => this.result3 = res,
           error: (err) => this.activity3Error = err,
           complete: () => this.activity3Complete = 'completed',
         }
@@ -61,7 +61,7 @@ export class Demo7Component {
 
     customObservable
       .subscribe(
-        (res) => this.activity4Result = res,
+        (res) => this.result4 = res,
         (err) => this.activity4Error = err,
         () => this.activity4Complete = 'completed',
       );
@@ -72,7 +72,7 @@ export class Demo7Component {
     EMPTY
       .subscribe(
         {
-          next: (res) => this.activity5Result = res,
+          next: (res) => this.result5 = res,
           complete: () => this.activity5Complete = 'completed',
         }
       );

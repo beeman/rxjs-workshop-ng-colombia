@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { fromEvent, Subject } from 'rxjs';
+import { BehaviorSubject, fromEvent, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-demo8',
@@ -8,6 +8,7 @@ import { fromEvent, Subject } from 'rxjs';
 export class Demo8Component implements OnInit {
 
   public activity1Subject = new Subject();
+  public activity2Subject = new BehaviorSubject({ count: 1 });
 
   ngOnInit() {
     this.activity1();

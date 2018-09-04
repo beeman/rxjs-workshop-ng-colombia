@@ -1,30 +1,41 @@
-<app-card title="Handling events">
-  <p>
-    In this demo we use 2 different ways to listen to the events of a button click.
-  </p>
-  <p>
-    Both button clicks will log the a message to the 'Message' panel below, and log the raw output
-    in the browsers console. Make sure to open the console to see this data.
-  </p>
-</app-card>
+<app-activity [title]="intro.title"
+              [description]="intro.description"
+              [showSolutionLink]="false"
+              [showContent]="false"
+              [showResult]="false"></app-activity>
 
-<app-card title="addEventListener">
-  <p>The first button uses the default <code>addEventListener</code> method provided by the browser.</p>
+<app-activity [title]="info1.title"
+              [description]="info1.description"
+              [steps]="info1.steps"
+              [solution]="info1.solution"
+              [result]="result1">
+
   <button #button1 class="btn btn-primary">Button 1</button>
-</app-card>
 
-<app-card title="fromEvent">
-  <p>The second button uses the <code>fromEvent</code> Observable.</p>
+</app-activity>
+
+<app-activity [title]="info2.title"
+              [description]="info2.description"
+              [steps]="info2.steps"
+              [solution]="info2.solution"
+              [result]="result2">
+
   <button #button2 class="btn btn-primary">Button 2</button>
-</app-card>
 
-<app-card title="fromEvent">
-  <!--<p>The second button uses the <code>fromEvent</code> Observable.</p>-->
-  <!--<button #button2 class="btn btn-primary">Button 2</button>-->
+</app-activity>
 
-  <pre>{{ documentClickResult | json }}</pre>
-</app-card>
+<app-activity [title]="info3.title"
+              [description]="info3.description"
+              [steps]="info3.steps"
+              [solution]="info3.solution"
+              [result]="result3">
+</app-activity>
 
-<app-card title="Message">
-  <pre>{{ message }}</pre>
-</app-card>
+<app-activity [title]="info4.title"
+              [description]="info4.description"
+              [steps]="info4.steps"
+              [solution]="info4.solution"
+              [showContent]="false"
+              [showResult]="false">
+
+</app-activity>

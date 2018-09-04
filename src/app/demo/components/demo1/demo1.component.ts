@@ -1,37 +1,42 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { fromEvent, Observable, Subscription } from 'rxjs';
+import { info1, info2, info3, info4, intro } from './demo1.activities';
 
 @Component({
   selector: 'app-demo1',
   templateUrl: './demo1.component.html',
 })
 export class Demo1Component implements OnDestroy, OnInit {
+  // Store the info about the activities
+  public readonly intro = intro;
+  public readonly info1 = info1;
+  public readonly info2 = info2;
+  public readonly info3 = info3;
+  public readonly info4 = info4;
+
   // Get a reference to the elements using their #tag
-  @ViewChild('button1') button1: ElementRef;
-  @ViewChild('button2') button2: ElementRef;
+  @ViewChild('button1') button1ref: ElementRef;
+  @ViewChild('button2') button2ref: ElementRef;
 
   // Store a reference to the actual nativeElement
-  private btn1El: HTMLElement;
-  private btn2El: HTMLElement;
+  private button1: HTMLElement;
+  private button2: HTMLElement;
 
-  // The message that will be displayed
-  public message: string;
-
-  public documentClickResult: any = {};
+  // Store the result of the activities
+  public result1: any;
+  public result2: any;
+  public result3: any;
 
   // Observable of Events from button2
   public button2$: Observable<Event>;
 
   // Reference to the Subscription of the button2 Observable
-  public button2Sub: Subscription;
+  public activity2sub: Subscription;
 
   // Reference to the Subscription of the button2 Observable
-  public documentClicksub: Subscription;
+  public activity3sub: Subscription;
 
-  // Log the event and update the message property
-  handleClick(button: string, event: any) {
-    console.log({event});
-    this.message = `You clicked ${button}`;
+  constructor() {
   }
 
   /**
@@ -39,71 +44,62 @@ export class Demo1Component implements OnDestroy, OnInit {
    */
   ngOnInit() {
     // Assign the nativeElements.
-    this.btn1El = this.button1.nativeElement;
-    this.btn2El = this.button2.nativeElement;
+    this.button1 = this.button1ref.nativeElement;
+    this.button2 = this.button2ref.nativeElement;
 
     // Run the activities
     this.activity1();
     this.activity2();
     this.activity3();
-    this.activity4();
   }
 
   /**
    * Activity 1
-   * Set up the addEventListener and log the event.
    */
   activity1() {
-    this.btn1El.addEventListener('click', (event) => this.handleClick('button1', event));
+    console.log('', 'aa');
+    this.button1.addEventListener('click', (event: MouseEvent) => {
+        console.log('aa', event);
+        this.result1 = {x: event.clientX, y: event.clientY};
+      }
+    );
   }
 
   /**
    * Activity 2
-   * Set up the fromEvent Observable.
    */
   activity2() {
-    this.button2$ = fromEvent(this.btn2El, 'click');
+    this.button2$ = fromEvent(this.button2, 'click');
+    this.activity2sub = this.button2$
+      .subscribe(
+        (event: MouseEvent) => {
+          this.result2 = {x: event.clientX, y: event.clientY};
+        },
+      );
   }
 
   /**
    * Activity 3
-   * Subscribe to the Observable log the event while storing a reference to the subscription.
    */
   activity3() {
-    this.button2Sub = this.button2$
+    this.activity3sub = fromEvent(document, 'click')
       .subscribe(
-        (event) => this.handleClick('button2', event),
+        (res: MouseEvent) => {
+          this.result3 = {x: res.clientX, y: res.clientY};
+        }
       );
   }
 
   /**
    * Activity 4
    *
-   */
-  activity4() {
-    this.documentClicksub = fromEvent(document, 'click')
-      .subscribe(
-        (res: MouseEvent) => {
-          console.log(res);
-          this.documentClickResult = {
-            clientX: res.clientX,
-            clientY: res.clientY,
-          };
-        }
-      );
-  }
-
-  /**
-   * Activity 5
-   *
    * The ngOnDestroy method runs on Component tear down.
    *
-   * Unsubscribe the observable to prevent memory leaks.
-   *
+   * It can be used to unsubscribe the observable to prevent memory leaks.
    */
   ngOnDestroy() {
-    this.button2Sub.unsubscribe();
-    this.documentClicksub.unsubscribe();
+    this.activity2sub.unsubscribe();
+    this.activity3sub.unsubscribe();
   }
 
 }

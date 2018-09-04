@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { fromEvent, Observable } from 'rxjs';
-import { mergeMap, takeUntil } from 'rxjs/operators';
+import { mergeMap, switchMap, takeUntil } from 'rxjs/operators';
+import { log } from 'util';
 
 
 @Component({
@@ -9,6 +10,9 @@ import { mergeMap, takeUntil } from 'rxjs/operators';
   styles: [`
     canvas {
       width: 100%;
+      /*position: absolute;*/
+      /*top: 0;*/
+      /*left: 0;*/
       background: #333;
     }
   `]
@@ -33,12 +37,17 @@ export class Demo3Component implements OnInit {
   private canvas1up$: Observable<Event>;
 
   //
-  private infiniteX = Infinity;
-  private infiniteY = Infinity;
+  public infiniteX = 0;
+  public infiniteY = 0;
   private colorHue = 0;
 
   initCanvas() {
     this.cvs1El = this.canvas1.nativeElement;
+
+    console.log('', window.innerWidth, window.innerHeight);
+
+    this.cvs1El.width = window.innerWidth;
+    this.cvs1El.height = window.innerHeight;
     this.cvs1Ctx = this.cvs1El.getContext('2d');
 
     this.cvs1Ctx.lineJoin = 'round';
@@ -52,10 +61,11 @@ export class Demo3Component implements OnInit {
 
     this.cvs1Ctx.beginPath();
 
-    if (Math.abs(this.infiniteX - clientX) < 100 && Math.abs(this.infiniteY - clientY) < 100) {
-      this.cvs1Ctx.moveTo(this.infiniteX, this.infiniteY);
-    }
-    this.cvs1Ctx.lineTo(clientX, clientY);
+    // if (Math.abs(this.infiniteX - clientX) < 100 && Math.abs(this.infiniteY - clientY) < 100) {
+    //   this.cvs1Ctx.moveTo(this.infiniteX, this.infiniteY);
+    // }
+    console.log('lineTo(clientX, clientY)', { clientX, clientY });
+    this.cvs1Ctx.lineTo(clientX - 300, clientY - 300);
     this.cvs1Ctx.stroke();
 
     this.infiniteX = clientX;
@@ -88,7 +98,7 @@ export class Demo3Component implements OnInit {
    */
   activity2() {
     const paints$ = this.canvas1down$.pipe(
-      mergeMap(() => this.canvas1move$.pipe(takeUntil(this.canvas1up$)))
+      switchMap(() => this.canvas1move$.pipe(takeUntil(this.canvas1up$)))
     );
 
     paints$.subscribe((event: any) => {
