@@ -12,6 +12,7 @@ import { CodeStepsComponent } from './components/code-steps/code-steps.component
 import { CountryCardComponent } from './components/country-card/country-card.component';
 import { LayoutComponent } from './containers/layout/layout.component';
 import { LayoutSidebarComponent } from './containers/layout-sidebar/layout-sidebar.component';
+import { LoaderComponent } from './components/loader/loader.component';
 import { PersonCardComponent } from './components/person-card/person-card.component';
 import { ResultComponent } from './components/result/result.component';
 
@@ -30,6 +31,7 @@ import { ResultComponent } from './components/result/result.component';
     CountryCardComponent,
     LayoutComponent,
     LayoutSidebarComponent,
+    LoaderComponent,
     PersonCardComponent,
     ResultComponent,
   ],
@@ -40,6 +42,7 @@ import { ResultComponent } from './components/result/result.component';
     CodeComponent,
     CodeStepsComponent,
     CountryCardComponent,
+    LoaderComponent,
     PersonCardComponent,
     ResultComponent,
   ],

@@ -9,7 +9,7 @@
     {{ title }}
     </div>
   </div>
-  <div class="card-body">
+  <div class="card-body" *ngIf="description.length">
     <div *ngFor="let item of description">
       <p class="my-3" [innerHTML]="item"></p>
     </div>
@@ -23,7 +23,7 @@
     </div>
   </div>
 
-  <div class="card-body">
+  <div class="card-body" *ngIf="steps || showContent">
     <ng-container *ngIf="steps">
       <app-code-steps [steps]="steps"></app-code-steps>
     </ng-container>

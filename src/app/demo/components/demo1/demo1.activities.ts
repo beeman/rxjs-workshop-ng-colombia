@@ -29,7 +29,7 @@ export const activity1 = {
       code: `this.button1.addEventListener('click', (event) => {});`,
     },
     {
-      step: `In the callback, assign an object to the vale of <code>activity1.result</code>.`,
+      step: `In the method body, assign an empty object to <code>result1</code>.`,
       code: `this.result1 = {};`,
     },
     {
@@ -74,15 +74,15 @@ this.activity2sub = this.button2$.subscribe((event: MouseEvent) => {
       code: `this.activity2sub = this.button2$.subscribe();`,
     },
     {
-      step: `Add a method that takes a parameter <code>event</code> of type <code>MouseEvent</code>.`,
+      step: `Add the keys <code>x</code> and <code>y</code> and assign the values of <code>event.clientX</code> and <code>event.clientY</code>`,
       code: `this.activity2sub = this.button2$.subscribe((event: MouseEvent) => {});`,
     },
     {
-      step: ` `,
+      step: `Inside the method body, assign an empty object to <code>result3</code>.`,
       code: `this.result2 = { };`,
     },
     {
-      step: ` `,
+      step: `Add the keys <code>x</code> and <code>y</code> and assign the values of <code>event.clientX</code> and <code>event.clientY</code>`,
       code: `this.result2 = { x: event.clientX, y: event.clientY };`,
     },
   ],
@@ -94,13 +94,37 @@ export const activity3 = {
     `The second button uses the <code>fromEvent</code> Observable.`
   ],
   solution: `this.activity3sub = fromEvent(document, 'click')
-  .subscribe((res: MouseEvent) => {
-    this.result3 = {x: res.clientX, y: res.clientY};
+  .subscribe((event: MouseEvent) => {
+    this.result3 = {x: event.clientX, y: event.clientY};
   });`,
   steps: [
     {
       step: ``,
-      code: ``,
+      code: `this.activity3sub = fromEvent()`,
+    },
+    {
+      step: ``,
+      code: `this.activity3sub = fromEvent(document, 'click')`,
+    },
+    {
+      step: `Call the <code>subscribe()</code> method`,
+      code: `.subscribe();`,
+    },
+    {
+      step: `Add a method that takes a parameter <code>event</code> of type <code>MouseEvent</code>.`,
+      code: `.subscribe((event: MouseEvent) => {});`,
+    },
+    {
+      step: `Inside the method body, assign an empty object to <code>result3</code>.`,
+      code: `.subscribe((event: MouseEvent) => {
+  this.result3 = { };
+});`,
+    },
+    {
+      step: `Add the keys <code>x</code> and <code>y</code> and assign the values of <code>event.clientX</code> and <code>event.clientY</code>`,
+      code: `.subscribe((event: MouseEvent) => {
+  this.result3 = {x: event.clientX, y: event.clientY};
+});`,
     },
   ],
 };

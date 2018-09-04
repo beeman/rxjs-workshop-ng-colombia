@@ -98,81 +98,45 @@ export class Demo2Component implements OnInit {
   }
 
   /**
-   * Activity 1
+   * Solution for Activity 1
    */
   solution1() {
-    this.button1$.subscribe(
-      () => this.increaseCounter('button1'),
-    );
+
   }
 
   /**
-   * Activity 2
+   * Solution for Activity 2
    */
   solution2() {
-    this.button2$
-      .pipe(throttleTime(this.throttleDelay))
-      .subscribe(
-        () => this.increaseCounter('button2'),
-      );
+
   }
 
   /**
-   * Activity 3
+   * Solution for Activity 3
    */
   solution3() {
-    this.button3$
-      .pipe(debounceTime(this.debounceDelay))
-      .subscribe(
-        () => this.increaseCounter('button3'),
-      );
+
   }
 
   /**
-   * Activity 4
+   * Solution for Activity 4
    */
   solution4() {
-    this.button4$
-      .pipe(
-        map(() => this.multiplyAmount)
-      )
-      .subscribe(
-        (amount) => this.increaseCounter('button4', amount),
-      );
+
   }
 
   /**
-   * Activity 5
+   * Solution for Activity 5
    */
   solution5() {
-    this.button5$
-      .pipe(
-        skip(this.skipAmount)
-      )
-      .subscribe(
-        () => this.increaseCounter('button5'),
-      );
 
   }
 
   /**
-   * Activity 6
+   * Solution for Activity 6
    */
   solution6() {
-    const button6stop = new Subject();
 
-    this.button6$
-      .pipe(
-        takeUntil(button6stop),
-      )
-      .subscribe(
-        () => {
-          if (this.counters.button6 + 1 === this.takeUntilAmount) {
-            button6stop.next();
-          }
-          this.increaseCounter('button6');
-        }
-      );
   }
 
 }

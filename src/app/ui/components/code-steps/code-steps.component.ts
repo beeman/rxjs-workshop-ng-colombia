@@ -12,4 +12,5 @@ interface Step {
 })
 export class CodeStepsComponent {
   @Input() public steps: Step[];
+  @Input() public defaultLang = 'ts';
 }

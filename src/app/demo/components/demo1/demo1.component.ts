@@ -84,8 +84,8 @@ export class Demo1Component implements OnDestroy, OnInit {
   solution3() {
     this.activity3sub = fromEvent(document, 'click')
       .subscribe(
-        (res: MouseEvent) => {
-          this.result3 = {x: res.clientX, y: res.clientY};
+        (event: MouseEvent) => {
+          this.result3 = {x: event.clientX, y: event.clientY};
         }
       );
   }

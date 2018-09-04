@@ -1,55 +1,48 @@
-<app-card title="Text Input"></app-card>
+<app-activity [title]="lesson.title"
+              [description]="lesson.description"
+              [showSolutionLink]="false"
+              [showContent]="false"
+              [showResult]="false"></app-activity>
 
-<app-card title="Input 1: Text Input">
-  <div>
-    <input class="form-control form-control-lg bg-secondary text-white"
-           #input1
-           type="text"
-           placeholder="Enter your search query">
-  </div>
-  <div class="p-2">
-    <pre>{{ input1result | json }}</pre>
-  </div>
-</app-card>
+<app-activity [title]="activity1.title"
+              [description]="activity1.description"
+              [steps]="activity1.steps"
+              [solution]="activity1.solution"
+              [result]="result1">
 
-<app-card title="Input 2: Transform input events">
-  <div>
-    <input class="form-control form-control-lg bg-secondary text-white"
-           #input2
-           type="text"
-           placeholder="Enter your search query">
-  </div>
-  <div class="p-2">
-    <pre>{{ input2result | json }}</pre>
-  </div>
-</app-card>
+  <input #input1 type="text" [class]="inputClass" [placeholder]="inputPlaceholder">
 
-<app-card title="Input 3: Search countries API">
-  <div>
-    <input class="form-control form-control-lg bg-secondary text-white"
-           #input3
-           type="text"
-           placeholder="Enter your search query">
-  </div>
+</app-activity>
 
-  <div *ngIf="input3result.error as error">
-    <pre>{{error | json}}</pre>
-  </div>
+<app-activity [title]="activity2.title"
+              [description]="activity2.description"
+              [steps]="activity2.steps"
+              [solution]="activity2.solution"
+              [result]="result2">
 
-  <div *ngIf="input3result.result as result; else noresult">
+  <input #input2 type="text" [class]="inputClass" [placeholder]="inputPlaceholder">
+
+</app-activity>
+
+<app-activity [title]="activity3.title"
+              [description]="activity3.description"
+              [steps]="activity3.steps"
+              [solution]="activity3.solution"
+              [result]="result3">
+
+  <input #input3 type="text" [class]="inputClass" [placeholder]="inputPlaceholder">
+
+  <div *ngIf="result3.error as error"><pre>{{error | json}}</pre></div>
+
+  <div *ngIf="result3.result as result; else noresult3">
     <div *ngFor="let item of result" class="my-3">
       <app-country-card [country]="item"></app-country-card>
     </div>
   </div>
 
-  <ng-template #noresult>
-    <div class="text-center" *ngIf="input3result.loading">
-      <i class="text-danger fa fa-spinner fa-spin fa-5x my-5"></i>
-    </div>
-    <div class="text-center" *ngIf="!input3result.loading && !result">
-      No result
-    </div>
+  <ng-template #noresult3>
+    <app-loader [show]="result3['loading']"></app-loader>
+    <div class="text-center" *ngIf="!result3['loading'] && !result"> No result </div>
   </ng-template>
 
-</app-card>
-
+</app-activity>

@@ -1,17 +1,32 @@
-<app-card title="Retrieve data from an API">
-  <p>
-    <button (click)="makeRequest()" [disabled]="loading">Random Gif</button>
-  </p>
-  <div *ngIf="result; else noresult">
+<app-activity [title]="lesson.title"
+              [description]="lesson.description"
+              [showSolutionLink]="false"
+              [showContent]="false"
+              [showResult]="false"></app-activity>
+
+<app-activity [title]="activity1.title"
+              [description]="activity1.description"
+              [steps]="activity1.steps"
+              [solution]="activity1.solution"
+              [result]="result1">
+
+
+  <!-- The button that initiates the request -->
+  <div class="my-3">
+    <button (click)="solution1()" [disabled]="loading1">Get Random Gif</button>
+  </div>
+
+  <!-- Display the result if we have one -->
+  <div *ngIf="result1 as result; else noresult1">
     <img [attr.src]="result.images['original']['url']" alt="">
   </div>
-  <ng-template #noresult>
-    <div class="text-center" *ngIf="loading">
-      <i class="text-danger fa fa-spinner fa-spin fa-5x my-5"></i>
-    </div>
-    <div class="text-center" *ngIf="!loading && !result">
-      No result
-    </div>
+
+  <!-- This template will be rendered when there is no result or when loading -->
+  <ng-template #noresult1>
+    <app-loader [show]="loading1"></app-loader>
+    <div class="text-center" *ngIf="!loading1 && !result"> No result </div>
   </ng-template>
-</app-card>
+
+</app-activity>
+
 

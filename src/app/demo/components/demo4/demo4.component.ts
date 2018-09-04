@@ -1,30 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
-import { delay, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+
+import { activity1, lesson } from './demo4.activities';
 
 @Component({
   selector: 'app-demo4',
   templateUrl: './demo4.component.html',
 })
 export class Demo4Component implements OnInit {
-  public result: any;
-  public loading = false;
+  public readonly lesson = lesson;
+  public readonly activity1 = activity1;
+
+  public result1: any;
+  public loading1 = false;
 
   constructor(private service: DataService) {}
 
   ngOnInit() {}
 
-  makeRequest() {
-    this.result = null;
-    this.loading = true;
+  /**
+   * Solution for Activity 1
+   */
+  solution1() {
+    this.result1 = null;
+    this.loading1 = true;
     this.service.randomImage()
-      .pipe(
-        delay(500),
-        map(result => result['data']),
-      )
-      .subscribe(res => {
-        this.loading = false;
-        this.result = res;
+      .pipe(map(result => result['data']))
+      .subscribe(data => {
+        this.result1 = data;
+        this.loading1 = false;
       });
   }
 
