@@ -1,8 +1,9 @@
 <app-card title="Description">
-  <p *ngFor="let line of description" [innerHtml]="line"></p>
+  In this demo we subscribe to the <code>mousemove</code>,  <code>mousedown</code> and  <code>mouseup</code> events.
+  Based on these events we draw a line with random colors onto a <code>canvas</code>.
 </app-card>
 
-<app-card [title]="'Canvas 1: Mouse Drag. x:' + infiniteX + ' y:' + infiniteY "  [style.color]="cvs1Ctx.strokeStyle">
-  <canvas #canvas1></canvas>
+<app-card title="Draw with your mouse!" [style.color]="canvas.context.strokeStyle">
+  <app-canvas #canvas></app-canvas>
 </app-card>
 

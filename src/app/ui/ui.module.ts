@@ -15,6 +15,7 @@ import { LayoutSidebarComponent } from './containers/layout-sidebar/layout-sideb
 import { LoaderComponent } from './components/loader/loader.component';
 import { PersonCardComponent } from './components/person-card/person-card.component';
 import { ResultComponent } from './components/result/result.component';
+import { CanvasComponent } from './components/canvas/canvas.component';
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import { ResultComponent } from './components/result/result.component';
     ActivityComponent,
     ButtonComponent,
     CardComponent,
+    CanvasComponent,
     CodeComponent,
     CodeStepsComponent,
     CountryCardComponent,
@@ -38,6 +40,7 @@ import { ResultComponent } from './components/result/result.component';
   exports: [
     ActivityComponent,
     ButtonComponent,
+    CanvasComponent,
     CardComponent,
     CodeComponent,
     CodeStepsComponent,
