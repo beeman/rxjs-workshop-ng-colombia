@@ -2,7 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-import { PrismModule } from '@ngx-prism/core';
+import { PrismModule } from '@sgbj/angular-prism';
+
+import 'prismjs/prism';
+import 'prismjs/components/prism-typescript';
+import 'prismjs/components/prism-scss';
+import 'prismjs/components/prism-markup';
 
 import { ActivityComponent } from './components/activity/activity.component';
 import { ButtonComponent } from './components/button/button.component';
