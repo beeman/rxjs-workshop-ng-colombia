@@ -1,13 +1,35 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { fromEvent, Observable, Subject } from 'rxjs';
-import { debounceTime, map, skip, takeUntil, throttleTime } from 'rxjs/operators';
-import { lesson, activity1, activity2, activity3, activity4, activity5, activity6 } from './demo2.activities';
+import { fromEvent, Observable } from 'rxjs';
+
+import {
+  activity1,
+  activity2,
+  activity3,
+  activity4,
+  activity5,
+  activity6,
+  lesson,
+} from './demo2.activities';
 
 @Component({
   selector: 'app-demo2',
   templateUrl: './demo2.component.html',
 })
 export class Demo2Component implements OnInit {
+  // Get a reference to the elements using their #tag
+  @ViewChild('button1')
+  button1ref: ElementRef;
+  @ViewChild('button2')
+  button2ref: ElementRef;
+  @ViewChild('button3')
+  button3ref: ElementRef;
+  @ViewChild('button5')
+  button5ref: ElementRef;
+  @ViewChild('button4')
+  button4ref: ElementRef;
+  @ViewChild('button6')
+  button6ref: ElementRef;
+
   // Store the info about the activities
   public readonly lesson = lesson;
   public readonly activity1 = activity1;
@@ -16,14 +38,6 @@ export class Demo2Component implements OnInit {
   public readonly activity4 = activity4;
   public readonly activity5 = activity5;
   public readonly activity6 = activity6;
-
-  // Get a reference to the elements using their #tag
-  @ViewChild('button1') button1ref: ElementRef;
-  @ViewChild('button2') button2ref: ElementRef;
-  @ViewChild('button3') button3ref: ElementRef;
-  @ViewChild('button5') button5ref: ElementRef;
-  @ViewChild('button4') button4ref: ElementRef;
-  @ViewChild('button6') button6ref: ElementRef;
 
   // Store a reference to the actual nativeElement
   private button1: HTMLElement;
@@ -100,43 +114,30 @@ export class Demo2Component implements OnInit {
   /**
    * Solution for Activity 1
    */
-  solution1() {
-
-  }
+  solution1() {}
 
   /**
    * Solution for Activity 2
    */
-  solution2() {
-
-  }
+  solution2() {}
 
   /**
    * Solution for Activity 3
    */
-  solution3() {
-
-  }
+  solution3() {}
 
   /**
    * Solution for Activity 4
    */
-  solution4() {
-
-  }
+  solution4() {}
 
   /**
    * Solution for Activity 5
    */
-  solution5() {
-
-  }
+  solution5() {}
 
   /**
    * Solution for Activity 6
    */
-  solution6() {
-
-  }
-
+  solution6() {}
 }

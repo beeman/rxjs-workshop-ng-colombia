@@ -12,15 +12,14 @@ interface Link {
   templateUrl: './layout-sidebar.component.html',
 })
 export class LayoutSidebarComponent implements OnInit {
-  @Input() public links: Link[];
+  @Input()
+  public links: Link[];
 
-  constructor(private route: ActivatedRoute) {
-  }
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.route.data
       .pipe(map(data => data['links']))
-      .subscribe(res => this.links = res);
+      .subscribe(res => (this.links = res));
   }
-
 }

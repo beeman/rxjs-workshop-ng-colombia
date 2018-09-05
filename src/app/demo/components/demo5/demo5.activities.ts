@@ -1,4 +1,10 @@
-import { debounceTime, distinctUntilChanged, map, switchMap, tap } from 'rxjs/operators';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  map,
+  switchMap,
+  tap,
+} from 'rxjs/operators';
 
 export const lesson = {
   title: 'Text input',
@@ -39,7 +45,6 @@ export const activity1 = {
   ],
 };
 
-
 export const activity2 = {
   title: 'Activity 2: Transform the text of an input',
   description: [
@@ -47,7 +52,7 @@ export const activity2 = {
     `First we Subscribe to <code>input1</code>, store its value and return it using the <code>map()</code> operator.`,
     `Next we use the <code>debounceTime()</code> operator to make sure we don't update our value on each keystroke`,
     `Lastly we use <code>distinctUntilChanged()</code> to make sure we only emit unique values`,
-    `All the above is assigned to the <code>input2$query</code> Observable, to which we later subscribe so we can print and update the result.`
+    `All the above is assigned to the <code>input2$query</code> Observable, to which we later subscribe so we can print and update the result.`,
   ],
   solution: `this.input2$query = this.input2$
   .pipe(
@@ -86,23 +91,23 @@ this.input2$query
     {
       step: `After the <code>map()</code> operator we add the <code>debounceTime()</code> operator and pass in the <code>debounceDelay</code>.`,
       code: `this.input2$query = this.input2$.pipe(
-    map((event) => {
-      this.result2.value = this.input2.value;
-      return this.input2.value;
-    }),
-    debounceTime(this.debounceDelay),
-  );`,
+  map((event) => {
+    this.result2.value = this.input2.value;
+    return this.input2.value;
+  }),
+  debounceTime(this.debounceDelay),
+);`,
     },
     {
       step: `After the <code>debounceTime()</code> operator we add the <code>distinctUntilChanged()</code> operator.`,
       code: `this.input2$query = this.input2$.pipe(
-    map((event) => {
-      this.result2.value = this.input2.value;
-      return this.input2.value;
-    }),
-    debounceTime(this.debounceDelay),
-    distinctUntilChanged(),
-  );`,
+  map((event) => {
+    this.result2.value = this.input2.value;
+    return this.input2.value;
+  }),
+  debounceTime(this.debounceDelay),
+  distinctUntilChanged(),
+);`,
     },
     {
       step: `Now that our observable and the transformations are done, we can <code>subscribe()</code> to it.`,
@@ -111,9 +116,9 @@ this.input2$query
     {
       step: `Inside the subscription we assign the resulting <code>query</code> to <code>result2.query</code>, and log it to the console.`,
       code: `this.input2$query.subscribe((query) => {
-    this.result2.query = query;
-    console.log('Updating query to', query);
-  });`,
+  this.result2.query = query;
+  console.log('Updating query to', query);
+});`,
     },
     {
       step: `When you type into the input, you should see that the <code>value</code> gets updated directly, whereas the <code>query</code> has a small delay.`,
@@ -123,7 +128,6 @@ this.input2$query
     },
   ],
 };
-
 
 export const activity3 = {
   title: 'Activity 3: Use the text input to make an API request',
@@ -194,7 +198,6 @@ this.input3$query.pipe(
     },
     {
       step: `You can also search for partial names, like <strong>united</strong> or <strong>island</strong>. Oh, and don't forget to check the flag of <strong>Nepal</strong> 😮 `,
-    }
+    },
   ],
 };
-

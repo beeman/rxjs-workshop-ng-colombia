@@ -1,15 +1,11 @@
 export const lesson = {
   title: 'Handling events',
-  description: [
-    ``,
-  ],
+  description: [``],
 };
 
 export const activity1 = {
   title: 'Activity X: ',
-  description: [
-    ``
-  ],
+  description: [``],
   solution: ``,
   steps: [
     {
@@ -18,4 +14,3 @@ export const activity1 = {
     },
   ],
 };
-

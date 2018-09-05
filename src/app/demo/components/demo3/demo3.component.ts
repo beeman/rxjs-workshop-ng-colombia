@@ -79,9 +79,11 @@ export class Demo3Component implements OnInit {
    */
   solution1() {
     // Set up the fromEvent Observables
-    this.canvas1move$ = fromEvent(this.cvs1El, 'mousemove');
-    this.canvas1down$ = fromEvent(this.cvs1El, 'mousedown');
     this.canvas1up$ = fromEvent(this.cvs1El, 'mouseup');
+    this.canvas1down$ = fromEvent(this.cvs1El, 'mousedown');
+    this.canvas1move$ = fromEvent(this.cvs1El, 'mousemove').pipe(
+      takeUntil(this.canvas1up$),
+    );
   }
 
   /**
@@ -89,7 +91,7 @@ export class Demo3Component implements OnInit {
    *
    */
   solution2() {
-    const paints$ = this.canvas1down$.pipe(switchMap(() => this.canvas1move$.pipe(takeUntil(this.canvas1up$))));
+    const paints$ = this.canvas1down$.pipe(switchMap(() => this.canvas1move$));
 
     paints$.subscribe((event: MouseEvent) => {
       this.paintCanvas(event);

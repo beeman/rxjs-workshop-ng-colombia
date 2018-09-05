@@ -1,8 +1,6 @@
 export const lesson = {
   title: 'Handling events',
-  description: [
-    `In this demo we use different ways to listen to the events of a button click.`,
-  ],
+  description: [`In this demo we use different ways to listen to the events of a button click.`],
   showContent: false,
   showResult: false,
 };
@@ -10,7 +8,7 @@ export const lesson = {
 export const activity1 = {
   title: 'Activity 1: addEventListener',
   description: [
-    'In this activity we listen to a button click using the default <code>addEventListener</code> method provided by the browser.'
+    'In this activity we listen to a button click using the default <code>addEventListener</code> method provided by the browser.',
   ],
   solution: `this.button1.addEventListener('click', (event) => {
   this.result1 = {x: event.clientX, y: event.clientY};
@@ -41,13 +39,12 @@ export const activity1 = {
 
 export const activity2 = {
   title: 'Activity 2: fromEvent',
-  description: [
-    `The second button uses the <code>fromEvent</code> Observable.`
-  ],
-  solution: `this.button2$ = fromEvent(this.button2, 'click');
-this.activity2sub = this.button2$.subscribe((event: MouseEvent) => {
-  this.result2 = {x: event.clientX, y: event.clientY};
-});`,
+  description: [`The second button uses the <code>fromEvent</code> Observable.`],
+  solution: `
+  this.button2$ = fromEvent(this.button2, 'click');
+  this.activity2sub = this.button2$.subscribe((event: MouseEvent) => {
+    this.result2 = {x: event.clientX, y: event.clientY};
+  });`,
   steps: [
     {
       step: `Import <code>fromEvent</code> from <code>rxjs</code>.`,
@@ -90,13 +87,12 @@ this.activity2sub = this.button2$.subscribe((event: MouseEvent) => {
 
 export const activity3 = {
   title: 'Activity 3: fromEvent',
-  description: [
-    `The second button uses the <code>fromEvent</code> Observable.`
-  ],
-  solution: `this.activity3sub = fromEvent(document, 'click')
-  .subscribe((event: MouseEvent) => {
-    this.result3 = {x: event.clientX, y: event.clientY};
-  });`,
+  description: [`The second button uses the <code>fromEvent</code> Observable.`],
+  solution: `
+  this.activity3sub = fromEvent(document, 'click')
+    .subscribe((event: MouseEvent) => {
+      this.result3 = {x: event.clientX, y: event.clientY};
+    });`,
   steps: [
     {
       step: ``,

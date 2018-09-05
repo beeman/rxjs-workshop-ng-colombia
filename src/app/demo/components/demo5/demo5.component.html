@@ -10,7 +10,10 @@
               [solution]="activity1.solution"
               [result]="result1">
 
-  <input #input1 type="text" [class]="inputClass" [placeholder]="inputPlaceholder">
+  <input #input1
+         type="text"
+         [class]="inputClass"
+         [placeholder]="inputPlaceholder">
 
 </app-activity>
 
@@ -20,7 +23,10 @@
               [solution]="activity2.solution"
               [result]="result2">
 
-  <input #input2 type="text" [class]="inputClass" [placeholder]="inputPlaceholder">
+  <input #input2
+         type="text"
+         [class]="inputClass"
+         [placeholder]="inputPlaceholder">
 
 </app-activity>
 
@@ -30,19 +36,26 @@
               [solution]="activity3.solution"
               [result]="result3">
 
-  <input #input3 type="text" [class]="inputClass" [placeholder]="inputPlaceholder">
+  <input #input3
+         type="text"
+         [class]="inputClass"
+         [placeholder]="inputPlaceholder">
 
-  <div *ngIf="result3.error as error"><pre>{{error | json}}</pre></div>
+  <div *ngIf="result3.error as error">
+    <pre>{{error | json}}</pre>
+  </div>
 
   <div *ngIf="result3.result as result; else noresult3">
-    <div *ngFor="let item of result" class="my-3">
+    <div *ngFor="let item of result"
+         class="my-3">
       <app-country-card [country]="item"></app-country-card>
     </div>
   </div>
 
   <ng-template #noresult3>
     <app-loader [show]="result3['loading']"></app-loader>
-    <div class="text-center" *ngIf="!result3['loading'] && !result"> No result </div>
+    <div class="text-center"
+         *ngIf="!result3['loading'] && !result"> No result </div>
   </ng-template>
 
 </app-activity>

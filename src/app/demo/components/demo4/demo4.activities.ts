@@ -1,31 +1,28 @@
 export const lesson = {
   title: 'Network Request',
-  description: [
-    `TODO  Add description for this Lesson`,
-  ],
+  description: [`TODO  Add description for this Lesson`],
 };
 
 export const activity1 = {
   title: 'Activity 1: Make a HTTP Request',
-  description: [
-    `In this activity we will use an RxJS Observable to make an HTTP Request.`
-  ],
-  solution: `this.result1 = null;
-this.loading1 = true;
+  description: [`In this activity we will use an RxJS Observable to make an HTTP Request.`],
+  solution: `this.result = null;
+this.loading = true;
+
 this.service.randomImage()
-  .pipe(map(result => result['data']))
+  .pipe(map(response => response['data']))
   .subscribe(data => {
-    this.result1 = data;
-    this.loading1 = false;
+    this.result = data;
+    this.loading = false;
   });`,
   steps: [
     {
-      step: `The first thing we want to do is set the value of <code>result1</code> to null so existing results get removed when making new requests.`,
-      code: `this.result1 = null;`,
+      step: `The first thing we want to do is set the value of <code>result</code> to null so existing results get removed when making new requests.`,
+      code: `this.result = null;`,
     },
     {
-      step: `Then we enable the loading indicator by setting <code>loading1</code> to <code>true</code>.`,
-      code: `this.loading1 = true;`,
+      step: `Then we enable the loading indicator by setting <code>loading</code> to <code>true</code>.`,
+      code: `this.loading = true;`,
     },
     {
       step: `We then call into the <code>randomImage()</code> method on the <code>service</code> that is responsible for retrieving the data.`,
@@ -52,12 +49,11 @@ this.service.randomImage()
       code: `.subscribe(data => {});`,
     },
     {
-      step: `We assign the <code>data</code> to <code>result1</code> and disable the loading indicator.`,
+      step: `We assign the <code>data</code> to <code>result</code> and disable the loading indicator.`,
       code: `.subscribe(data => {
-    this.result1 = data;
-    this.loading1 = false;
-  });`,
+  this.result = data;
+  this.loading = false;
+});`,
     },
   ],
 };
-

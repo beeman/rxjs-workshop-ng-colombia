@@ -6,7 +6,6 @@ import { EMPTY, from, Observable, of, throwError } from 'rxjs';
   templateUrl: './demo7.component.html',
 })
 export class Demo7Component {
-
   public result1: any;
   public result2: any;
   public result3: any;
@@ -25,30 +24,26 @@ export class Demo7Component {
       date: Date.now(),
     };
 
-    of(result)
-      .subscribe(
-        res => this.result1 = res,
-      );
+    of(result).subscribe(res => (this.result1 = res));
   }
 
   solution2() {
-    const promise = Promise.resolve({action: 'I am a Promise', date: Date.now()});
+    const promise = Promise.resolve({
+      action: 'I am a Promise',
+      date: Date.now(),
+    });
 
-    from(promise)
-      .subscribe(
-        res => this.result2 = res,
-      );
+    from(promise).subscribe(res => (this.result2 = res));
   }
 
   solution3() {
-    throwError('This is the error message')
-      .subscribe(
-        {
-          next: (res) => this.result3 = res,
-          error: (err) => this.activity3Error = err,
-          complete: () => this.activity3Complete = 'completed',
-        }
-      );
+    throwError('This is the error message').subscribe({
+      next: res => (this.result3 = res),
+
+      error: err => (this.activity3Error = err),
+
+      complete: () => (this.activity3Complete = 'completed'),
+    });
   }
 
   solution4() {
@@ -59,23 +54,17 @@ export class Demo7Component {
       observer.complete('Done Emitting Values');
     });
 
-    customObservable
-      .subscribe(
-        (res) => this.result4 = res,
-        (err) => this.activity4Error = err,
-        () => this.activity4Complete = 'completed',
-      );
+    customObservable.subscribe(
+      res => (this.result4 = res),
+      err => (this.activity4Error = err),
+      () => (this.activity4Complete = 'completed'),
+    );
   }
-
 
   solution5() {
-    EMPTY
-      .subscribe(
-        {
-          next: (res) => this.result5 = res,
-          complete: () => this.activity5Complete = 'completed',
-        }
-      );
+    EMPTY.subscribe({
+      next: res => (this.result5 = res),
+      complete: () => (this.activity5Complete = 'completed'),
+    });
   }
-
 }

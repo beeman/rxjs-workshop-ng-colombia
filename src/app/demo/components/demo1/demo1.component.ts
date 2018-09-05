@@ -1,22 +1,36 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { fromEvent, Observable, Subscription } from 'rxjs';
-import { activity1, activity2, activity3, activity4, lesson } from './demo1.activities';
+import {
+  activity1,
+  activity2,
+  activity3,
+  activity4,
+  lesson,
+} from './demo1.activities';
 
 @Component({
   selector: 'app-demo1',
   templateUrl: './demo1.component.html',
 })
 export class Demo1Component implements OnDestroy, OnInit {
+  // Get a reference to the elements using their #tag
+  @ViewChild('button1')
+  button1ref: ElementRef;
+  @ViewChild('button2')
+  button2ref: ElementRef;
+
   // Store the info about the activities
   public readonly lesson = lesson;
   public readonly activity1 = activity1;
   public readonly activity2 = activity2;
   public readonly activity3 = activity3;
   public readonly activity4 = activity4;
-
-  // Get a reference to the elements using their #tag
-  @ViewChild('button1') button1ref: ElementRef;
-  @ViewChild('button2') button2ref: ElementRef;
 
   // Store a reference to the actual nativeElement
   private button1: HTMLElement;
@@ -36,8 +50,7 @@ export class Demo1Component implements OnDestroy, OnInit {
   // Reference to the Subscription of the button2 Observable
   public activity3sub: Subscription;
 
-  constructor() {
-  }
+  constructor() {}
 
   /**
    * The ngOnInit method runs on Component initialization.
@@ -59,10 +72,9 @@ export class Demo1Component implements OnDestroy, OnInit {
   solution1() {
     console.log('', 'aa');
     this.button1.addEventListener('click', (event: MouseEvent) => {
-        console.log('aa', event);
-        this.result1 = {x: event.clientX, y: event.clientY};
-      }
-    );
+      console.log('aa', event);
+      this.result1 = { x: event.clientX, y: event.clientY };
+    });
   }
 
   /**
@@ -70,24 +82,20 @@ export class Demo1Component implements OnDestroy, OnInit {
    */
   solution2() {
     this.button2$ = fromEvent(this.button2, 'click');
-    this.activity2sub = this.button2$
-      .subscribe(
-        (event: MouseEvent) => {
-          this.result2 = {x: event.clientX, y: event.clientY};
-        },
-      );
+    this.activity2sub = this.button2$.subscribe((event: MouseEvent) => {
+      this.result2 = { x: event.clientX, y: event.clientY };
+    });
   }
 
   /**
    * Activity 3
    */
   solution3() {
-    this.activity3sub = fromEvent(document, 'click')
-      .subscribe(
-        (event: MouseEvent) => {
-          this.result3 = {x: event.clientX, y: event.clientY};
-        }
-      );
+    this.activity3sub = fromEvent(document, 'click').subscribe(
+      (event: MouseEvent) => {
+        this.result3 = { x: event.clientX, y: event.clientY };
+      },
+    );
   }
 
   /**
@@ -101,5 +109,4 @@ export class Demo1Component implements OnDestroy, OnInit {
     this.activity2sub.unsubscribe();
     this.activity3sub.unsubscribe();
   }
-
 }

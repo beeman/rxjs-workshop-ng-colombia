@@ -14,7 +14,6 @@ export class Demo0Component {
       '🤓 Freelance softare engineer',
       '👨‍🏫 Instructor at @eggheadio',
       '👨‍💻 Author at @PacktPub',
-    ]
+    ],
   };
-
 }

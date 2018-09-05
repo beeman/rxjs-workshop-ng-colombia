@@ -11,9 +11,7 @@ export const lesson = {
 
 export const activity1 = {
   title: 'Activity 1: Subscription only',
-  description: [
-    `Subscribe to the button clicks without transforming the stream.`
-  ],
+  description: [`Subscribe to the button clicks without transforming the stream.`],
   solution: `this.button1$.subscribe(
   () => this.increaseCounter('button1'),
 );
@@ -37,7 +35,7 @@ export const activity1 = {
 export const activity2 = {
   title: 'Activity 2: Throttle clicks with a delay',
   description: [
-    `The <code>throttleTime</code> operator limits the number of events that get emitted in the specified time.`
+    `The <code>throttleTime</code> operator limits the number of events that get emitted in the specified time.`,
   ],
   solution: `this.button2$
   .pipe(throttleTime(this.throttleDelay))
@@ -69,7 +67,7 @@ export const activity2 = {
 export const activity3 = {
   title: 'Activity 3: Debounce the clicks with a delay.',
   description: [
-    `The <code>debounceTime</code> operator sets the specified time it waits between events before emitting the event.`
+    `The <code>debounceTime</code> operator sets the specified time it waits between events before emitting the event.`,
   ],
   solution: `this.button3$
   .pipe(debounceTime(this.debounceDelay))
@@ -133,12 +131,9 @@ export const activity4 = {
   ],
 };
 
-
 export const activity5 = {
   title: 'Exercise 1: Skip the first number of clicks.',
-  description: [
-    `The <code>skip</code> operator starts emitting after the specified amount.`,
-  ],
+  description: [`The <code>skip</code> operator starts emitting after the specified amount.`],
   solution: `this.button5$
   .pipe(skip(this.skipAmount))
   .subscribe(() => this.increaseCounter('button5'));`,

@@ -1,6 +1,13 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { fromEvent, Observable } from 'rxjs';
-import { debounceTime, distinctUntilChanged, map, switchMap, tap } from 'rxjs/operators';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  map,
+  switchMap,
+  tap,
+} from 'rxjs/operators';
+
 import { DataService } from '../../services/data.service';
 import { activity1, activity2, activity3, lesson } from './demo5.activities';
 
@@ -9,6 +16,13 @@ import { activity1, activity2, activity3, lesson } from './demo5.activities';
   templateUrl: './demo5.component.html',
 })
 export class Demo5Component implements OnInit {
+  @ViewChild('input1')
+  input1ref: ElementRef;
+  @ViewChild('input2')
+  input2ref: ElementRef;
+  @ViewChild('input3')
+  input3ref: ElementRef;
+
   public readonly lesson = lesson;
   public readonly activity1 = activity1;
   public readonly activity2 = activity2;
@@ -16,10 +30,6 @@ export class Demo5Component implements OnInit {
 
   public inputClass = 'form-control form-control-lg bg-secondary text-white';
   public inputPlaceholder = 'Enter your search query';
-
-  @ViewChild('input1') input1ref: ElementRef;
-  @ViewChild('input2') input2ref: ElementRef;
-  @ViewChild('input3') input3ref: ElementRef;
 
   private input1: HTMLInputElement;
   private input2: HTMLInputElement;
@@ -47,19 +57,16 @@ export class Demo5Component implements OnInit {
     query: '',
   };
 
-
-  constructor(private data: DataService) {
-  }
+  constructor(private data: DataService) {}
 
   /**
    * Method to handle the search query and setting the loading indicator
    */
   search3(query) {
     this.result3.loading = true;
-    return this.data.getCountriesByName(query)
-      .pipe(
-        tap(() => this.result3.loading = false),
-      );
+    return this.data
+      .getCountriesByName(query)
+      .pipe(tap(() => (this.result3.loading = false)));
   }
 
   ngOnInit() {
@@ -82,7 +89,7 @@ export class Demo5Component implements OnInit {
    * Subscribe to input1 and update the value in result1
    */
   solution1() {
-    this.input1$.subscribe((event) => {
+    this.input1$.subscribe(event => {
       this.result1.value = this.input1.value;
       console.log(event);
     });
@@ -101,22 +108,23 @@ export class Demo5Component implements OnInit {
     this.input2$query = this.input2$.pipe(
       // Use the map operator to return the value of the input into the stream
       // We ignore the event we get back as we are not interested in the keyboard interaction, but in the value of the input.
-      map((event) => {
+      map(event => {
         this.result2.value = this.input2.value;
         return this.input2.value;
       }),
+
       // Update the value after debouncing
       debounceTime(this.debounceDelay),
+
       // Only emit values that are changed
       distinctUntilChanged(),
     );
 
-    this.input2$query.subscribe((query) => {
+    this.input2$query.subscribe(query => {
       console.log('Updating query to', query);
       this.result2.query = query;
     });
   }
-
 
   /**
    * Activity 3
@@ -134,23 +142,26 @@ export class Demo5Component implements OnInit {
     this.input3$query = this.input3$.pipe(
       // Return the input value
       map(() => this.input3.value),
+
       // Update the value after debouncing
       debounceTime(this.debounceDelay),
+
       // Only emit values that are changed
       distinctUntilChanged(),
     );
 
-    this.input3$query.pipe(
-      tap(query => this.result3.query = query),
-      switchMap((query) => this.search3(query))
-    ).subscribe(
-      result => this.result3.result = result,
-      error => {
-        this.result3.error = error;
-        this.result3.loading = false;
-        this.result3.result = null;
-      }
-    );
+    this.input3$query
+      .pipe(
+        tap(query => (this.result3.query = query)),
+        switchMap(query => this.search3(query)),
+      )
+      .subscribe(
+        result => (this.result3.result = result),
+        error => {
+          this.result3.error = error;
+          this.result3.loading = false;
+          this.result3.result = null;
+        },
+      );
   }
-
 }

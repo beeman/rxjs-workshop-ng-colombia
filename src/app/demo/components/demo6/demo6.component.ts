@@ -4,11 +4,4 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-demo6',
   templateUrl: './demo6.component.html',
 })
-export class Demo6Component implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
+export class Demo6Component {}

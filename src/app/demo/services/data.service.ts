@@ -1,24 +1,27 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { randomImageUrl, imageSearchUrl } from './lib/giphy.api';
-import { countriesByCapital, countriesByLang, countriesByName } from './lib/countries.api';
 import { delay } from 'rxjs/operators';
 
+import {
+  countriesByCapital,
+  countriesByLang,
+  countriesByName,
+} from './lib/countries.api';
+import { imageSearchUrl, randomImageUrl } from './lib/giphy.api';
+
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DataService {
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   public searchImage(query: string, limit = 10, offset = 0): Observable<any> {
     return this.http.get(imageSearchUrl(query, limit, offset));
   }
 
   public randomImage(): Observable<any> {
-    return this.http.get(randomImageUrl())
-      .pipe(delay(500));
+    return this.http.get(randomImageUrl()).pipe(delay(500));
   }
 
   getCountriesByLang(lang: string): Observable<any> {
@@ -32,5 +35,4 @@ export class DataService {
   getCountriesByCapital(capital: string): Observable<any> {
     return this.http.get(countriesByCapital(capital));
   }
-
 }
