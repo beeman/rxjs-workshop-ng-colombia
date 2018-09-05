@@ -1,9 +1,14 @@
-<app-card title="Description">
-  In this demo we subscribe to the <code>mousemove</code>,  <code>mousedown</code> and  <code>mouseup</code> events.
-  Based on these events we draw a line with random colors onto a <code>canvas</code>.
-</app-card>
+<app-activity [title]="lesson.title"
+              [description]="lesson.description"
+              [showSolutionLink]="false"
+              [showContent]="false"
+              [showResult]="false"></app-activity>
 
-<app-card title="Draw with your mouse!" [style.color]="canvas.context.strokeStyle">
-  <app-canvas #canvas></app-canvas>
-</app-card>
+<app-activity [title]="activity1.title"
+              [description]="activity1.description"
+              [steps]="activity1.steps"
+              [solution]="activity1.solution"
+              [showResult]="false">
+</app-activity>
 
+<app-canvas #canvas></app-canvas>

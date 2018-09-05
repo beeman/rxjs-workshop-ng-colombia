@@ -9,10 +9,9 @@ import { Demo2Component } from './components/demo2/demo2.component';
 import { Demo3Component } from './components/demo3/demo3.component';
 import { Demo4Component } from './components/demo4/demo4.component';
 import { Demo5Component } from './components/demo5/demo5.component';
-// import { Demo6Component } from './components/demo6/demo6.component';
+import { Demo6Component } from './components/demo6/demo6.component';
 import { Demo7Component } from './components/demo7/demo7.component';
-import { Demo8Component } from './components/demo8/demo8.component';
-import { Demo9Component } from './components/demo9/demo9.component';
+// import { Demo8Component } from './components/demo8/demo8.component';
 
 const routes: Routes = [{
   path: '',
@@ -25,10 +24,9 @@ const routes: Routes = [{
       { label: 'Draw on a canvas', url: 'draw-canvas' },
       { label: 'Network Request', url: 'network-request' },
       { label: 'Text Input', url: 'text-input' },
-      // { label: '', url: 'demo6' },
       { label: 'Creating Observables', url: 'creating-observables' },
       { label: 'Subjects', url: 'subjects' },
-      // { label: 'Extra Exercises 2', url: 'extra-exercises-2' },
+      // { label: 'Extra Exercises', url: 'extra-exercises' },
     ],
   },
   children: [
@@ -39,11 +37,10 @@ const routes: Routes = [{
     { path: 'draw-canvas', component: Demo3Component },
     { path: 'network-request', component: Demo4Component },
     { path: 'text-input', component: Demo5Component },
-    // { path: 'demo6', component: Demo6Component },
-    { path: 'creating-observables', component: Demo7Component },
-    { path: 'subjects', component: Demo8Component },
-    // { path: 'extra-exercises-2', component: Demo9Component },
-  ],
+    { path: 'creating-observables', component: Demo6Component },
+    { path: 'subjects', component: Demo7Component },
+    // { path: 'extra-exercises', component: Demo8Component },
+  ]
 }];
 
 @NgModule({

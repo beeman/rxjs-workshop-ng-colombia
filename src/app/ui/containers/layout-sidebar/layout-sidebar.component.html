@@ -4,7 +4,7 @@
       <a class="nav-link" data-toggle="pill" role="tab"
          *ngFor="let link of links; let i = index"
          [routerLink]="link.url" routerLinkActive="active">
-        {{ i + 1 }}. {{link.label}}
+        {{ i }}. {{link.label}}
       </a>
     </div>
   </div>
