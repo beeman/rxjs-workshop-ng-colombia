@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { fromEvent, Observable, Subject } from 'rxjs';
-import { debounceTime, map, skip, takeUntil, throttleTime } from 'rxjs/operators';
+import {  } from 'rxjs/operators';
 import { lesson, activity1, activity2, activity3, activity4, activity5, activity6 } from './demo2.activities';
 
 @Component({
@@ -126,14 +126,14 @@ export class Demo2Component implements OnInit {
   }
 
   /**
-   * Solution for Activity 5
+   * Solution for Excersice 1
    */
   solution5() {
 
   }
 
   /**
-   * Solution for Activity 6
+   * Solution for Excersice 2
    */
   solution6() {
 

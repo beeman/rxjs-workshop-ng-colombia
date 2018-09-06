@@ -17,7 +17,7 @@ export const activity1 = {
 });`,
   steps: [
     {
-      step: `Subscribe to <code>input1$</code> and take the <code>event</code>.`,
+      step: `Subscribe to <code>input1$</code> and take the <code>event</code> as parameter of the callback.`,
       code: `this.input1$.subscribe((event) => {});`,
     },
     {
@@ -84,7 +84,7 @@ this.input2$query
 );`,
     },
     {
-      step: `After the <code>map()</code> operator we add the <code>debounceTime()</code> operator and pass in the <code>debounceDelay</code>.`,
+      step: `After the <code>map()</code> operator we add the <code>debounceTime()</code> operator and pass in the <code>debounceDelay</code> (set to 300ms).`,
       code: `this.input2$query = this.input2$.pipe(
     map((event) => {
       this.result2.value = this.input2.value;
@@ -159,7 +159,7 @@ this.input3$query.pipe(
       code: `this.input3$query.pipe()`,
     },
     {
-      step: `Add the <code>tab()</code> operator to the <code>pipe()</code> and make it store the <code>query</code> in <code>result3.query</code>.`,
+      step: `Add the <code>tap()</code> operator to the <code>pipe()</code> and make it store the <code>query</code> in <code>result3.query</code>.`,
       code: `this.input3$query.pipe(
   tap(query => this.result3.query = query),
 )`,
@@ -172,14 +172,14 @@ this.input3$query.pipe(
 )`,
     },
     {
-      step: `Chain the <code>subscribe()</code> method to the <code>pipe()</code>, make the <code>next</code> callback set <code>result</code> to <code>result3.result</code> and add an empty method for the <code>error</code> callback`,
+      step: `Chain the <code>subscribe()</code> method to the <code>pipe()</code>, make the callback set <code>result</code> to <code>result3.result</code> and add an empty method for the <code>error</code> callback`,
       code: `.subscribe(
   result => this.result3.result = result,
   error => { }
 );`,
     },
     {
-      step: `Handle the code in the <code>error</code> callback, storing the error message, disabling the loading indicator and setting result to <code>null</code>x`,
+      step: `Handle the code in the <code>error</code> callback, storing the error message, disabling the loading indicator and setting result to <code>null</code>`,
       code: `.subscribe(
   result => this.result3.result = result,
   error => {

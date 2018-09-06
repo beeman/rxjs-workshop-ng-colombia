@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { fromEvent, Observable, Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { activity1, activity2, activity3, activity4, lesson } from './demo1.activities';
 
 @Component({
@@ -72,7 +72,7 @@ export class Demo1Component implements OnDestroy, OnInit {
   }
 
   /**
-   * Activity 4
+   * Excercise 1
    *
    * The ngOnDestroy method runs on Component tear down.
    *
