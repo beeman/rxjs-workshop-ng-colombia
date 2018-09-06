@@ -30,7 +30,7 @@ export const activity1 = {
       code: `.subscribe(result => this.result1 = result);`
     },
     {
-      step: 'Run the example and observe the result',
+      step: 'Run the example clicking the button at the end of this activity and observe the result.',
     },
     {
       step: `Add a second parameter to the <code>of()</code> method, for example an object with your name.`,
@@ -91,14 +91,14 @@ export const activity3 = {
   steps: [
     {
       step: `Use the <code>throwError</code> method from <code>rxjs</code> and pass in the error message we want to appear.`,
-      code: `from(promise)`,
+      code: `throwError('This is the error message')`,
     },
     {
       step: `Chain <code>subscribe()</code> to the Observable and instead add in an object.`,
       code: `.subscribe({});`
     },
     {
-      step: `Add an <code>error</code> and <code>complete</code> key to the object.`,
+      step: `Add an <code>error</code> key to the object with its callback function to asign error message to <code>result3 </code>.`,
       code: `.subscribe({
   error: (message) => this.result3 = message,
 });`
@@ -143,7 +143,7 @@ myObservable.subscribe(
 });`,
     },
     {
-      step: `On a new line, chain the <code>subscribe()</code> method onto <code>myObservable</code> and pass in an object. Fill in t`,
+      step: `On a new line, chain the <code>subscribe()</code> method onto <code>myObservable</code> and pass in an object.`,
       code: `myObservable.subscribe({});`
     },
     {
@@ -168,7 +168,7 @@ myObservable.subscribe(
 };
 
 export const activity5 = {
-  title: 'Activity 5: empty, interval, range',
+  title: 'Excercise 1: empty, interval, range',
   description: [
     `In this exercise we look at some more 'creation' observables.`
   ],

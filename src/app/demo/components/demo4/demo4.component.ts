@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
-import { map } from 'rxjs/operators';
+import {  } from 'rxjs/operators';
 
 import { activity1, lesson } from './demo4.activities';
 

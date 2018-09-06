@@ -41,7 +41,7 @@ this.service.randomImage()
     },
     {
       step: `Add the <code>map()</code> operator to the <code>pipe()</code>.`,
-      code: `.pipe(map()`,
+      code: `.pipe(map())`,
     },
     {
       step: `In the <code>map()</code> operator, take the result and make it return the <code>data</code> property of the result.`,

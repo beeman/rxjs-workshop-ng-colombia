@@ -74,11 +74,11 @@ this.activity2sub = this.button2$.subscribe((event: MouseEvent) => {
       code: `this.activity2sub = this.button2$.subscribe();`,
     },
     {
-      step: `Add the keys <code>x</code> and <code>y</code> and assign the values of <code>event.clientX</code> and <code>event.clientY</code>`,
+      step: `Create a callback method that takes a parameter <code>event</code>.`,
       code: `this.activity2sub = this.button2$.subscribe((event: MouseEvent) => {});`,
     },
     {
-      step: `Inside the method body, assign an empty object to <code>result3</code>.`,
+      step: `Inside the method body, assign an empty object to <code>result2</code>.`,
       code: `this.result2 = { };`,
     },
     {
@@ -91,7 +91,7 @@ this.activity2sub = this.button2$.subscribe((event: MouseEvent) => {
 export const activity3 = {
   title: 'Activity 3: fromEvent',
   description: [
-    `The second button uses the <code>fromEvent</code> Observable.`
+    `In this case we use the <code>fromEvent</code> Observable again, but in this case we are going to use it to capture the click event anywhere in the document.`
   ],
   solution: `this.activity3sub = fromEvent(document, 'click')
   .subscribe((event: MouseEvent) => {
@@ -111,7 +111,7 @@ export const activity3 = {
       code: `.subscribe();`,
     },
     {
-      step: `Add a method that takes a parameter <code>event</code> of type <code>MouseEvent</code>.`,
+      step: `Add a callback function that takes a parameter <code>event</code> of type <code>MouseEvent</code>.`,
       code: `.subscribe((event: MouseEvent) => {});`,
     },
     {
