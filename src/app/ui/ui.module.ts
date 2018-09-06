@@ -2,7 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-import { PrismModule } from '@ngx-prism/core';
+import { PrismModule } from '@sgbj/angular-prism';
+
+import 'prismjs/prism';
+import 'prismjs/components/prism-typescript';
+import 'prismjs/components/prism-scss';
+import 'prismjs/components/prism-markup';
 
 import { ActivityComponent } from './components/activity/activity.component';
 import { ButtonComponent } from './components/button/button.component';
@@ -15,6 +20,7 @@ import { LayoutSidebarComponent } from './containers/layout-sidebar/layout-sideb
 import { LoaderComponent } from './components/loader/loader.component';
 import { PersonCardComponent } from './components/person-card/person-card.component';
 import { ResultComponent } from './components/result/result.component';
+import { CanvasComponent } from './components/canvas/canvas.component';
 
 @NgModule({
   imports: [
@@ -26,6 +32,7 @@ import { ResultComponent } from './components/result/result.component';
     ActivityComponent,
     ButtonComponent,
     CardComponent,
+    CanvasComponent,
     CodeComponent,
     CodeStepsComponent,
     CountryCardComponent,
@@ -38,6 +45,7 @@ import { ResultComponent } from './components/result/result.component';
   exports: [
     ActivityComponent,
     ButtonComponent,
+    CanvasComponent,
     CardComponent,
     CodeComponent,
     CodeStepsComponent,

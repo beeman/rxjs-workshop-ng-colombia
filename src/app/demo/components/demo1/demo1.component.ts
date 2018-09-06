@@ -54,40 +54,21 @@ export class Demo1Component implements OnDestroy, OnInit {
   }
 
   /**
-   * Activity 1
+   * Solution for Activity 1
    */
   solution1() {
-    console.log('', 'aa');
-    this.button1.addEventListener('click', (event: MouseEvent) => {
-        console.log('aa', event);
-        this.result1 = {x: event.clientX, y: event.clientY};
-      }
-    );
   }
 
   /**
-   * Activity 2
+   * Solution for Activity 2
    */
   solution2() {
-    this.button2$ = fromEvent(this.button2, 'click');
-    this.activity2sub = this.button2$
-      .subscribe(
-        (event: MouseEvent) => {
-          this.result2 = {x: event.clientX, y: event.clientY};
-        },
-      );
   }
 
   /**
-   * Activity 3
+   * Solution for Activity 3
    */
   solution3() {
-    this.activity3sub = fromEvent(document, 'click')
-      .subscribe(
-        (event: MouseEvent) => {
-          this.result3 = {x: event.clientX, y: event.clientY};
-        }
-      );
   }
 
   /**
@@ -98,8 +79,6 @@ export class Demo1Component implements OnDestroy, OnInit {
    * It can be used to unsubscribe the observable to prevent memory leaks.
    */
   ngOnDestroy() {
-    this.activity2sub.unsubscribe();
-    this.activity3sub.unsubscribe();
   }
 
 }

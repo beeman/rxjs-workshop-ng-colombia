@@ -48,7 +48,7 @@ this.service.randomImage()
       code: `.pipe(map(result => result['data']))`,
     },
     {
-      step: `Lastly we chain the <code>subscribe()</code> method onto our <code>pipe()</code> and take the <code>data</code>.`,
+      step: `Lastly we chain the <code>subscribe()</code> method onto the <code>pipe()</code> and take the <code>data</code>.`,
       code: `.subscribe(data => {});`,
     },
     {

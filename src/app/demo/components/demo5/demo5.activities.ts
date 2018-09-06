@@ -45,8 +45,8 @@ export const activity2 = {
   description: [
     `In this activity we will transform the text of an input, from it's raw value to a query we can send to the API.`,
     `First we Subscribe to <code>input1</code>, store its value and return it using the <code>map()</code> operator.`,
-    `Next we use the <code>debounceTime()</code> operator to make sure we don't update our value on each keystroke`,
-    `Lastly we use <code>distinctUntilChanged()</code> to make sure we only emit unique values`,
+    `Next we use the <code>debounceTime()</code> operator to make sure we don't update the value on each keystroke, but after a delay.`,
+    `Lastly we use <code>distinctUntilChanged()</code> to make sure we only emit unique values.`,
     `All the above is assigned to the <code>input2$query</code> Observable, to which we later subscribe so we can print and update the result.`
   ],
   solution: `this.input2$query = this.input2$
@@ -105,7 +105,7 @@ this.input2$query
   );`,
     },
     {
-      step: `Now that our observable and the transformations are done, we can <code>subscribe()</code> to it.`,
+      step: `Now that the observable and the transformations are done, we can <code>subscribe()</code> to it.`,
       code: `this.input2$query.subscribe((query) => {});`,
     },
     {
