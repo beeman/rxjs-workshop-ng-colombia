@@ -12,12 +12,12 @@ export class Demo4Component implements OnInit {
   public readonly lesson = lesson;
   public readonly activity1 = activity1;
 
-  public result1: any;
-  public loading1 = false;
+  public result: any;
+  public loading = false;
 
-  constructor(private service: DataService) {}
+  constructor(private service: DataService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   /**
    * Solution for Activity 1

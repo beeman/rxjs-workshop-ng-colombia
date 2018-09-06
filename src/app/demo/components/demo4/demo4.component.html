@@ -8,25 +8,26 @@
               [description]="activity1.description"
               [steps]="activity1.steps"
               [solution]="activity1.solution"
-              [result]="result1">
+              [result]="result">
 
 
   <!-- The button that initiates the request -->
   <div class="my-3">
-    <button (click)="solution1()" [disabled]="loading1">Get Random Gif</button>
+    <button (click)="solution1()"
+            [disabled]="loading">Get Random Gif</button>
   </div>
 
   <!-- Display the result if we have one -->
-  <div *ngIf="result1 as result; else noresult1">
-    <img [attr.src]="result.images['original']['url']" alt="">
+  <div *ngIf="result as result; else noresult">
+    <img [attr.src]="result.images['original']['url']"
+         alt="">
   </div>
 
   <!-- This template will be rendered when there is no result or when loading -->
-  <ng-template #noresult1>
-    <app-loader [show]="loading1"></app-loader>
-    <div class="text-center" *ngIf="!loading1 && !result"> No result </div>
+  <ng-template #noresult>
+    <app-loader [show]="loading"></app-loader>
+    <div class="text-center"
+         *ngIf="!loading1 && !result"> No result </div>
   </ng-template>
 
 </app-activity>
-
-
