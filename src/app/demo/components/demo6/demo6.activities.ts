@@ -1,7 +1,9 @@
 export const lesson = {
-  title: '"Creating Observables',
+  title: 'Creating Observables',
   description: [
-    ``,
+    `In this demo we will see a few ways to create observables, starting with the ones you can just call to create the observable, to creating one from scratch.`,
+    `We will see how to create observables with the <code>of</code>, <code>from</code> and <code>create</code> creators`,
+    `In the extra exercises section for the quick ones we can work with the <code>empty</code>, <code>interval</code> and <code>range</code> creators.`,
   ],
 };
 
@@ -48,8 +50,8 @@ export const activity2 = {
   ],
   solution: `const promise = Promise.resolve({ name: 'Awesome Dev', date: Date.now()});
 
-  from(promise)
-    .subscribe(result => this.result2 = result);`,
+from(promise)
+  .subscribe(result => this.result2 = result);`,
   steps: [
     {
       step: `First we define a local constant <code>promise</code> and set the value to <code>Promise.resolve()</code>.`,
@@ -191,4 +193,3 @@ export const activity5 = {
     }
   ],
 };
-

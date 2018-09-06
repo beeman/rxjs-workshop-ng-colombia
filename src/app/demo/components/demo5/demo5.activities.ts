@@ -50,18 +50,18 @@ export const activity2 = {
     `All the above is assigned to the <code>input2$query</code> Observable, to which we later subscribe so we can print and update the result.`
   ],
   solution: `this.input2$query = this.input2$
-  .pipe(
-    // Use the map operator to return the value of the input into the stream
-    // We ignore the event we get back as we are not interested in the keyboard interaction, but in the value of the input.
-    map((event) => {
-      this.result2.value = this.input2.value;
-      return this.input2.value;
-    }),
-    // Update the value after debouncing
-    debounceTime(this.debounceDelay),
-    // Only emit values that are changed
-    distinctUntilChanged(),
-  );
+.pipe(
+  // Use the map operator to return the value of the input into the stream
+  // We ignore the event we get back as we are not interested in the keyboard interaction, but in the value of the input.
+  map((event) => {
+    this.result2.value = this.input2.value;
+    return this.input2.value;
+  }),
+  // Update the value after debouncing
+  debounceTime(this.debounceDelay),
+  // Only emit values that are changed
+  distinctUntilChanged(),
+);
 
 this.input2$query
   .subscribe((query) => {
@@ -86,23 +86,23 @@ this.input2$query
     {
       step: `After the <code>map()</code> operator we add the <code>debounceTime()</code> operator and pass in the <code>debounceDelay</code>.`,
       code: `this.input2$query = this.input2$.pipe(
-    map((event) => {
-      this.result2.value = this.input2.value;
-      return this.input2.value;
-    }),
-    debounceTime(this.debounceDelay),
-  );`,
+  map((event) => {
+    this.result2.value = this.input2.value;
+    return this.input2.value;
+  }),
+  debounceTime(this.debounceDelay),
+);`,
     },
     {
       step: `After the <code>debounceTime()</code> operator we add the <code>distinctUntilChanged()</code> operator.`,
       code: `this.input2$query = this.input2$.pipe(
-    map((event) => {
-      this.result2.value = this.input2.value;
-      return this.input2.value;
-    }),
-    debounceTime(this.debounceDelay),
-    distinctUntilChanged(),
-  );`,
+  map((event) => {
+    this.result2.value = this.input2.value;
+    return this.input2.value;
+  }),
+  debounceTime(this.debounceDelay),
+  distinctUntilChanged(),
+);`,
     },
     {
       step: `Now that the observable and the transformations are done, we can <code>subscribe()</code> to it.`,
@@ -111,9 +111,9 @@ this.input2$query
     {
       step: `Inside the subscription we assign the resulting <code>query</code> to <code>result2.query</code>, and log it to the console.`,
       code: `this.input2$query.subscribe((query) => {
-    this.result2.query = query;
-    console.log('Updating query to', query);
-  });`,
+  this.result2.query = query;
+  console.log('Updating query to', query);
+});`,
     },
     {
       step: `When you type into the input, you should see that the <code>value</code> gets updated directly, whereas the <code>query</code> has a small delay.`,
@@ -197,4 +197,3 @@ this.input3$query.pipe(
     }
   ],
 };
-
