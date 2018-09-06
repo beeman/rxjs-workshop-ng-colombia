@@ -16,5 +16,15 @@ export class Demo0Component {
       '👨‍💻 Author at @PacktPub',
     ]
   };
+  personLeonardo = {
+    name: 'Leonardo Perez',
+    avatar: 'https://avatars3.githubusercontent.com/u/19419023',
+    facts: []
+  };
+  personCarlos = {
+    name: 'Carlos Lopez',
+    avatar: 'https://pbs.twimg.com/profile_images/998226111292104708/t23KUw9h_400x400.jpg',
+    facts: []
+  };
 
 }
