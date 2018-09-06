@@ -3,8 +3,8 @@
 // pulse, sandstone, simplex, sketchy, slate, solar, spacelab, superhero, united
 @import "~bootswatch/dist/darkly/bootstrap.min.css";
 
-// Font Awesome
-@import "~font-awesome/css/font-awesome.min.css";
+// Font Awesome Is not imported in index.html so it works in StackBlitz
+//@import "~font-awesome/css/font-awesome.min.css";
 
 //@import "~prismjs/themes/prism-dark.css";
 

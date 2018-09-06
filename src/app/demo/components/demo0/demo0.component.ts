@@ -11,7 +11,7 @@ export class Demo0Component {
     facts: [
       '🇳🇱 Born in the Netherlands',
       '🛫 Living abroad since 2015',
-      '🤓 Freelance softare engineer',
+      '🤓 Freelance software engineer',
       '👨‍🏫 Instructor at @eggheadio',
       '👨‍💻 Author at @PacktPub',
     ]
